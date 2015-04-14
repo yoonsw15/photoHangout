@@ -7,6 +7,7 @@
 //
 
 #import "InitialViewController.h"
+#import "FriendsTableViewController.h"
 
 @interface InitialViewController ()
 
@@ -17,13 +18,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-  
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.userName endEditing:YES];
+    [self.pwName endEditing:YES];
+}
+- (IBAction)loginTapped:(id)sender {
+    FriendsTableViewController *friendsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"friendVC"];
+    [self.navigationController pushViewController:friendsVC animated:YES];
 }
 
 /*

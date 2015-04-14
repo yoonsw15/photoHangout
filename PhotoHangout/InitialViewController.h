@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface InitialViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *userName;
+@property (strong, nonatomic) IBOutlet UITextField *pwName;
 
 @end

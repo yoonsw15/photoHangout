@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E32F46761ADC98FB00C51C8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F46751ADC98FB00C51C8F /* main.m */; };
 		E32F46791ADC98FB00C51C8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F46781ADC98FB00C51C8F /* AppDelegate.m */; };
-		E32F467F1ADC98FB00C51C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32F467D1ADC98FB00C51C8F /* Main.storyboard */; };
 		E32F46811ADC98FB00C51C8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32F46801ADC98FB00C51C8F /* Images.xcassets */; };
 		E32F46841ADC98FB00C51C8F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32F46821ADC98FB00C51C8F /* LaunchScreen.xib */; };
 		E32F46901ADC98FB00C51C8F /* PhotoHangoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F468F1ADC98FB00C51C8F /* PhotoHangoutTests.m */; };
@@ -58,6 +57,7 @@
 		E32F47EF1ADCC4F700C51C8F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F47EE1ADCC4F700C51C8F /* CFNetwork.framework */; };
 		E32F47F11ADCC4FD00C51C8F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F47F01ADCC4FD00C51C8F /* Security.framework */; };
 		E32F47F31ADCC50200C51C8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F47F21ADCC50200C51C8F /* Foundation.framework */; };
+		E32F47F51ADCC9BA00C51C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32F47F41ADCC9BA00C51C8F /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +76,6 @@
 		E32F46751ADC98FB00C51C8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E32F46771ADC98FB00C51C8F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E32F46781ADC98FB00C51C8F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E32F467E1ADC98FB00C51C8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E32F46801ADC98FB00C51C8F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E32F46831ADC98FB00C51C8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E32F46891ADC98FB00C51C8F /* PhotoHangoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoHangoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +166,7 @@
 		E32F47EE1ADCC4F700C51C8F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E32F47F01ADCC4FD00C51C8F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E32F47F21ADCC50200C51C8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E32F47F41ADCC9BA00C51C8F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,7 +220,7 @@
 			children = (
 				E32F46771ADC98FB00C51C8F /* AppDelegate.h */,
 				E32F46781ADC98FB00C51C8F /* AppDelegate.m */,
-				E32F467D1ADC98FB00C51C8F /* Main.storyboard */,
+				E32F47F41ADCC9BA00C51C8F /* Main.storyboard */,
 				E32F46991ADC9A4A00C51C8F /* InitialViewController.h */,
 				E32F469A1ADC9A4A00C51C8F /* InitialViewController.m */,
 				E32F46A31ADCA25F00C51C8F /* PhotoEditViewController.h */,
@@ -545,10 +545,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E32F467F1ADC98FB00C51C8F /* Main.storyboard in Resources */,
 				E32F46841ADC98FB00C51C8F /* LaunchScreen.xib in Resources */,
 				E32F47871ADCBDBF00C51C8F /* CLImageEditor.bundle in Resources */,
 				E32F46811ADC98FB00C51C8F /* Images.xcassets in Resources */,
+				E32F47F51ADCC9BA00C51C8F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,14 +627,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E32F467D1ADC98FB00C51C8F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E32F467E1ADC98FB00C51C8F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E32F46821ADC98FB00C51C8F /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

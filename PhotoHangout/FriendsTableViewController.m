@@ -25,12 +25,12 @@ NSString *const kFriendTableCellNibName = @"FriendsTableViewCell";
     self.nearByFriends = [[NSMutableArray alloc] initWithCapacity:10];
     self.nearByFriends = @[@"Minsuk Oh", @"Won Jae Lee"];
     
-    self.friendURL = @" ";
+    //self.friendURL = @" ";
     
-    self.friendWebSocket = [[SRWebSocket alloc] initWithURLRequest:self.friendURL];
-    self.friendWebSocket.delegate = self;
+    //self.friendWebSocket = [[SRWebSocket alloc] initWithURLRequest:self.friendURL];
+    //self.friendWebSocket.delegate = self;
     
-    [self.friendWebSocket open];
+    //[self.friendWebSocket open];
 
     
     // Uncomment the following line to preserve selection between presentations.
