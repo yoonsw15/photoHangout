@@ -54,6 +54,7 @@
 		E32F47E01ADCBE2400C51C8F /* CLClippingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F47DF1ADCBE2400C51C8F /* CLClippingTool.m */; };
 		E32F47E31ADCBE2F00C51C8F /* CLBlurTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F47E21ADCBE2F00C51C8F /* CLBlurTool.m */; };
 		E32F47E61ADCBE3600C51C8F /* CLAdjustmentTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F47E51ADCBE3600C51C8F /* CLAdjustmentTool.m */; };
+		E32F47EB1ADCC39B00C51C8F /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F47EA1ADCC39B00C51C8F /* SRWebSocket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +158,9 @@
 		E32F47E21ADCBE2F00C51C8F /* CLBlurTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLBlurTool.m; path = PhotoHangout/CLImageEditor/ImageTools/CLBlurTool/CLBlurTool.m; sourceTree = "<group>"; };
 		E32F47E41ADCBE3600C51C8F /* CLAdjustmentTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAdjustmentTool.h; path = PhotoHangout/CLImageEditor/ImageTools/CLAdjustmentTool/CLAdjustmentTool.h; sourceTree = "<group>"; };
 		E32F47E51ADCBE3600C51C8F /* CLAdjustmentTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAdjustmentTool.m; path = PhotoHangout/CLImageEditor/ImageTools/CLAdjustmentTool/CLAdjustmentTool.m; sourceTree = "<group>"; };
+		E32F47E81ADCC39B00C51C8F /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		E32F47E91ADCC39B00C51C8F /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		E32F47EA1ADCC39B00C51C8F /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +187,7 @@
 		E32F46671ADC98FB00C51C8F = {
 			isa = PBXGroup;
 			children = (
+				E32F47E71ADCC39B00C51C8F /* SocketRocket */,
 				E32F46A81ADCB5A100C51C8F /* CLImageEditor */,
 				E32F46721ADC98FB00C51C8F /* PhotoHangout */,
 				E32F468C1ADC98FB00C51C8F /* PhotoHangoutTests */,
@@ -436,6 +441,17 @@
 			name = CLEffect;
 			sourceTree = "<group>";
 		};
+		E32F47E71ADCC39B00C51C8F /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				E32F47E81ADCC39B00C51C8F /* SocketRocket-Prefix.pch */,
+				E32F47E91ADCC39B00C51C8F /* SRWebSocket.h */,
+				E32F47EA1ADCC39B00C51C8F /* SRWebSocket.m */,
+			);
+			name = SocketRocket;
+			path = PhotoHangout/SocketRocket;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -562,6 +578,7 @@
 				E32F47D61ADCBE1400C51C8F /* CLHighlightShadowEffect.m in Sources */,
 				E32F469B1ADC9A4A00C51C8F /* InitialViewController.m in Sources */,
 				E32F47B31ADCBDED00C51C8F /* UIView+CLImageToolInfo.m in Sources */,
+				E32F47EB1ADCC39B00C51C8F /* SRWebSocket.m in Sources */,
 				E32F47D81ADCBE1400C51C8F /* CLPixellateEffect.m in Sources */,
 				E32F47D41ADCBE1400C51C8F /* CLBloomEffect.m in Sources */,
 				E32F479A1ADCBDD100C51C8F /* UIDevice+SystemVersion.m in Sources */,
