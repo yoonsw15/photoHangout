@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  InitialViewController.h
 //  PhotoHangout
 //
 //  Created by Seung Won Yoon on 2015. 4. 13..
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface InitialViewController : UIViewController
 
 @end
-
