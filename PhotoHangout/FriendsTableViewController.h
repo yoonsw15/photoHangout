@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CLImageEditor.h"
+#import "SRWebSocket.h"
 
-@interface FriendsTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface FriendsTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, SRWebSocketDelegate>
 
 @property (nonatomic, strong) NSMutableArray *nearByFriends;
-@property (strong, nonatomic) IBOutlet UITableView *myTableView;
+@property (nonatomic, strong) SRWebSocket *friendWebSocket;
+@property (nonatomic, strong) NSURLRequest *friendURL;
 
 @end

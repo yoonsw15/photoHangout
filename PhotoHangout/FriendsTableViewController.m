@@ -25,8 +25,13 @@ NSString *const kFriendTableCellNibName = @"FriendsTableViewCell";
     self.nearByFriends = [[NSMutableArray alloc] initWithCapacity:10];
     self.nearByFriends = @[@"Minsuk Oh", @"Won Jae Lee"];
     
+    self.friendURL = @" ";
+    
+    self.friendWebSocket = [[SRWebSocket alloc] initWithURLRequest:self.friendURL];
+    self.friendWebSocket.delegate = self;
+    
+    [self.friendWebSocket open];
 
-    [self.tableView registerNib:[UINib nibWithNibName:kFriendTableCellNibName bundle:nil] forCellReuseIdentifier:kFriendsCellIdentifier];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -59,10 +64,6 @@ NSString *const kFriendTableCellNibName = @"FriendsTableViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFriendsCellIdentifier forIndexPath:indexPath];
-    
-    
-    
-    
     cell.textLabel.text = [self.nearByFriends objectAtIndex:indexPath.row];
 
     return cell;
@@ -72,9 +73,15 @@ NSString *const kFriendTableCellNibName = @"FriendsTableViewCell";
 {
     NSLog(@"Section %li, Row: %li", indexPath.section, indexPath.row );
     
+    NSString *message = [NSString stringWithFormat:@"%@%@",[self.nearByFriends objectAtIndex:indexPath.row], @" have been tapped"];
     
+    [self.friendWebSocket send:message];
 }
 
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
+{
+    
+}
 
 /*
 // Override to support conditional editing of the table view.
