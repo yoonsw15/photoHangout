@@ -9,13 +9,11 @@
 /* Begin PBXBuildFile section */
 		E32F46761ADC98FB00C51C8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F46751ADC98FB00C51C8F /* main.m */; };
 		E32F46791ADC98FB00C51C8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F46781ADC98FB00C51C8F /* AppDelegate.m */; };
-		E32F467F1ADC98FB00C51C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32F467D1ADC98FB00C51C8F /* Main.storyboard */; };
 		E32F46811ADC98FB00C51C8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32F46801ADC98FB00C51C8F /* Images.xcassets */; };
 		E32F46841ADC98FB00C51C8F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32F46821ADC98FB00C51C8F /* LaunchScreen.xib */; };
 		E32F46901ADC98FB00C51C8F /* PhotoHangoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F468F1ADC98FB00C51C8F /* PhotoHangoutTests.m */; };
 		E32F469B1ADC9A4A00C51C8F /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F469A1ADC9A4A00C51C8F /* InitialViewController.m */; };
 		E32F469E1ADC9CC800C51C8F /* FriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F469D1ADC9CC800C51C8F /* FriendsTableViewController.m */; };
-		E32F46A01ADC9E9100C51C8F /* FriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32F469F1ADC9E9100C51C8F /* FriendsTableViewCell.xib */; };
 		E32F46A51ADCA25F00C51C8F /* PhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F46A41ADCA25F00C51C8F /* PhotoEditViewController.m */; };
 		E32F46BB1ADCB60000C51C8F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F46BA1ADCB60000C51C8F /* Accelerate.framework */; };
 		E32F46BD1ADCB60800C51C8F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F46BC1ADCB60800C51C8F /* CoreGraphics.framework */; };
@@ -55,6 +53,11 @@
 		E32F47E31ADCBE2F00C51C8F /* CLBlurTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F47E21ADCBE2F00C51C8F /* CLBlurTool.m */; };
 		E32F47E61ADCBE3600C51C8F /* CLAdjustmentTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F47E51ADCBE3600C51C8F /* CLAdjustmentTool.m */; };
 		E32F47EB1ADCC39B00C51C8F /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F47EA1ADCC39B00C51C8F /* SRWebSocket.m */; };
+		E32F47ED1ADCC4F100C51C8F /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F47EC1ADCC4F100C51C8F /* libicucore.dylib */; };
+		E32F47EF1ADCC4F700C51C8F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F47EE1ADCC4F700C51C8F /* CFNetwork.framework */; };
+		E32F47F11ADCC4FD00C51C8F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F47F01ADCC4FD00C51C8F /* Security.framework */; };
+		E32F47F31ADCC50200C51C8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F47F21ADCC50200C51C8F /* Foundation.framework */; };
+		E32F47F51ADCC9BA00C51C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32F47F41ADCC9BA00C51C8F /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +76,6 @@
 		E32F46751ADC98FB00C51C8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E32F46771ADC98FB00C51C8F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E32F46781ADC98FB00C51C8F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E32F467E1ADC98FB00C51C8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E32F46801ADC98FB00C51C8F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E32F46831ADC98FB00C51C8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E32F46891ADC98FB00C51C8F /* PhotoHangoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoHangoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,7 +85,6 @@
 		E32F469A1ADC9A4A00C51C8F /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
 		E32F469C1ADC9CC800C51C8F /* FriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewController.h; sourceTree = "<group>"; };
 		E32F469D1ADC9CC800C51C8F /* FriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewController.m; sourceTree = "<group>"; };
-		E32F469F1ADC9E9100C51C8F /* FriendsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsTableViewCell.xib; sourceTree = "<group>"; };
 		E32F46A31ADCA25F00C51C8F /* PhotoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoEditViewController.h; sourceTree = "<group>"; };
 		E32F46A41ADCA25F00C51C8F /* PhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoEditViewController.m; sourceTree = "<group>"; };
 		E32F46BA1ADCB60000C51C8F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -161,6 +162,11 @@
 		E32F47E81ADCC39B00C51C8F /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
 		E32F47E91ADCC39B00C51C8F /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
 		E32F47EA1ADCC39B00C51C8F /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		E32F47EC1ADCC4F100C51C8F /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		E32F47EE1ADCC4F700C51C8F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E32F47F01ADCC4FD00C51C8F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E32F47F21ADCC50200C51C8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E32F47F41ADCC9BA00C51C8F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +174,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E32F47F31ADCC50200C51C8F /* Foundation.framework in Frameworks */,
+				E32F47F11ADCC4FD00C51C8F /* Security.framework in Frameworks */,
+				E32F47EF1ADCC4F700C51C8F /* CFNetwork.framework in Frameworks */,
+				E32F47ED1ADCC4F100C51C8F /* libicucore.dylib in Frameworks */,
 				E32F46BF1ADCB60F00C51C8F /* CoreImage.framework in Frameworks */,
 				E32F46BD1ADCB60800C51C8F /* CoreGraphics.framework in Frameworks */,
 				E32F46BB1ADCB60000C51C8F /* Accelerate.framework in Frameworks */,
@@ -210,14 +220,13 @@
 			children = (
 				E32F46771ADC98FB00C51C8F /* AppDelegate.h */,
 				E32F46781ADC98FB00C51C8F /* AppDelegate.m */,
-				E32F467D1ADC98FB00C51C8F /* Main.storyboard */,
+				E32F47F41ADCC9BA00C51C8F /* Main.storyboard */,
 				E32F46991ADC9A4A00C51C8F /* InitialViewController.h */,
 				E32F469A1ADC9A4A00C51C8F /* InitialViewController.m */,
 				E32F46A31ADCA25F00C51C8F /* PhotoEditViewController.h */,
 				E32F46A41ADCA25F00C51C8F /* PhotoEditViewController.m */,
 				E32F469C1ADC9CC800C51C8F /* FriendsTableViewController.h */,
 				E32F469D1ADC9CC800C51C8F /* FriendsTableViewController.m */,
-				E32F469F1ADC9E9100C51C8F /* FriendsTableViewCell.xib */,
 				E32F46801ADC98FB00C51C8F /* Images.xcassets */,
 				E32F46821ADC98FB00C51C8F /* LaunchScreen.xib */,
 				E32F46731ADC98FB00C51C8F /* Supporting Files */,
@@ -271,6 +280,10 @@
 		E32F46C01ADCB61600C51C8F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E32F47F21ADCC50200C51C8F /* Foundation.framework */,
+				E32F47F01ADCC4FD00C51C8F /* Security.framework */,
+				E32F47EE1ADCC4F700C51C8F /* CFNetwork.framework */,
+				E32F47EC1ADCC4F100C51C8F /* libicucore.dylib */,
 				E32F46BE1ADCB60F00C51C8F /* CoreImage.framework */,
 				E32F46BC1ADCB60800C51C8F /* CoreGraphics.framework */,
 				E32F46BA1ADCB60000C51C8F /* Accelerate.framework */,
@@ -532,11 +545,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E32F467F1ADC98FB00C51C8F /* Main.storyboard in Resources */,
 				E32F46841ADC98FB00C51C8F /* LaunchScreen.xib in Resources */,
 				E32F47871ADCBDBF00C51C8F /* CLImageEditor.bundle in Resources */,
 				E32F46811ADC98FB00C51C8F /* Images.xcassets in Resources */,
-				E32F46A01ADC9E9100C51C8F /* FriendsTableViewCell.xib in Resources */,
+				E32F47F51ADCC9BA00C51C8F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,14 +627,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E32F467D1ADC98FB00C51C8F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E32F467E1ADC98FB00C51C8F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E32F46821ADC98FB00C51C8F /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -720,6 +724,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoHangout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -730,6 +735,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoHangout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
