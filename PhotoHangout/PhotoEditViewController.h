@@ -10,5 +10,6 @@
 #import "CLImageEditor.h"
 
 @interface PhotoEditViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
 @end

@@ -8,5 +8,5 @@
 #import "CLImageToolBase.h"
 
 @interface CLFilterTool : CLImageToolBase
-
+- (UIImage*)filteredImage:(UIImage*)image withToolInfo:(CLImageToolInfo*)info;
 @end

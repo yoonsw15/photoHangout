@@ -112,6 +112,12 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         UIImage *image = [self filteredImage:_originalImage withToolInfo:view.toolInfo];
+        
+        /*
+        NSString *message = [NSString stringWithFormat:@"%@%@",view.toolInfo.title, @"}"];
+         [self.friendWebSocket send:message];
+        */
+        
         [self.editor.imageView performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:NO];
         inProgress = NO;
     });
