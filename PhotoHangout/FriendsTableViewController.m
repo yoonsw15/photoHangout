@@ -25,12 +25,12 @@ NSString *const kFriendTableCellNibName = @"FriendsTableViewCell";
     self.nearByFriends = [[NSMutableArray alloc] initWithCapacity:10];
     self.nearByFriends = @[@"Minsuk Oh", @"Won Jae Lee"];
     
-    //self.friendURL = @" ";
+    self.friendURL = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString: @"ws://localhost:8025/photohangout/websocket"]];
     
-    //self.friendWebSocket = [[SRWebSocket alloc] initWithURLRequest:self.friendURL];
-    //self.friendWebSocket.delegate = self;
+    self.friendWebSocket = [[SRWebSocket alloc] initWithURLRequest:self.friendURL];
+    self.friendWebSocket.delegate = self;
     
-    //[self.friendWebSocket open];
+    [self.friendWebSocket open];
 
     
     // Uncomment the following line to preserve selection between presentations.
@@ -76,11 +76,23 @@ NSString *const kFriendTableCellNibName = @"FriendsTableViewCell";
     NSString *message = [NSString stringWithFormat:@"%@%@",[self.nearByFriends objectAtIndex:indexPath.row], @" have been tapped"];
     
     [self.friendWebSocket send:message];
+    
+    if (indexPath.row == 1)
+    {
+        [self.friendWebSocket close];
+    }
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
     
+}
+
+- (void)dealloc
+{
+    if ([self.friendWebSocket readyState] == SR_OPEN) {
+        [self.friendWebSocket close];
+    }
 }
 
 /*
