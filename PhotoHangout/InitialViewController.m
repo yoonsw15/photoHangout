@@ -7,7 +7,7 @@
 //
 
 #import "InitialViewController.h"
-#import "FriendsTableViewController.h"
+#import "FriendsViewController.h"
 
 @interface InitialViewController ()
 
@@ -30,7 +30,7 @@
     [self.pwName endEditing:YES];
 }
 - (IBAction)loginTapped:(id)sender {
-    FriendsTableViewController *friendsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"friendVC"];
+    FriendsViewController *friendsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"friendVC"];
     [self.navigationController pushViewController:friendsVC animated:YES];
 }
 
