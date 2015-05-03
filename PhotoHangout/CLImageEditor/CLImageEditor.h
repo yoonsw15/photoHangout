@@ -34,7 +34,6 @@
 
 @protocol CLImageEditorDelegate <NSObject>
 @optional
-- (void)sendToolInfo:(CLImageToolInfo*)info;
 
 - (void)imageEditor:(CLImageEditor*)editor didFinishEdittingWithImage:(UIImage*)image;
 - (void)imageEditorDidCancel:(CLImageEditor*)editor;

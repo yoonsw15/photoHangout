@@ -25,7 +25,7 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
 {
     UIImage *_originalImage;
     
-    UIView *_workingView;
+    //UIView *_workingView;
     
     UIScrollView *_menuScroll;
 }
@@ -71,16 +71,17 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
 {
     _originalImage = self.editor.imageView.image;
     
-    [self.editor fixZoomScaleWithAnimated:YES];
+    //Scalaing of the imageview.
+    //[self.editor fixZoomScaleWithAnimated:YES];
     
     _menuScroll = [[UIScrollView alloc] initWithFrame:self.editor.menuView.frame];
     _menuScroll.backgroundColor = self.editor.menuView.backgroundColor;
     _menuScroll.showsHorizontalScrollIndicator = NO;
     [self.editor.view addSubview:_menuScroll];
     
-    _workingView = [[UIView alloc] initWithFrame:[self.editor.view convertRect:self.editor.imageView.frame fromView:self.editor.imageView.superview]];
-    _workingView.clipsToBounds = YES;
-    [self.editor.view addSubview:_workingView];
+//    _workingView = [[UIView alloc] initWithFrame:[self.editor.view convertRect:self.editor.imageView.frame fromView:self.editor.imageView.superview]];
+//    _workingView.clipsToBounds = YES;
+//    [self.editor.view addSubview:_workingView];
     
     [self setStickerMenu];
     
@@ -95,7 +96,7 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
 {
     [self.editor resetZoomScaleWithAnimated:YES];
     
-    [_workingView removeFromSuperview];
+//    [_workingView removeFromSuperview];
     
     [UIView animateWithDuration:kCLImageToolAnimationDuration
                      animations:^{
@@ -157,9 +158,9 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
     NSString *filePath = view.userInfo[@"filePath"];
     if(filePath){
         _CLStickerView *view = [[_CLStickerView alloc] initWithImage:[UIImage imageWithContentsOfFile:filePath] tool:self];
-        CGFloat ratio = MIN( (0.5 * _workingView.width) / view.width, (0.5 * _workingView.height) / view.height);
+        CGFloat ratio = MIN( (0.5 * self.editor.view.width) / view.width, (0.5 * self.editor.view.height) / view.height);
         [view setScale:ratio];
-        view.center = CGPointMake(_workingView.width/2, _workingView.height/2);
+        view.center = CGPointMake(self.editor.view.width/2, self.editor.view.height/2);
         
             /*WEBSOCKET
              
@@ -171,7 +172,7 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
              */
         
     
-        [_workingView addSubview:view];
+        [self.editor.view addSubview:view];
         [_CLStickerView setActiveStickerView:view];
     }
     
@@ -189,9 +190,9 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
     
     [image drawAtPoint:CGPointZero];
     
-    CGFloat scale = image.size.width / _workingView.width;
+    CGFloat scale = image.size.width / self.editor.view.width;
     CGContextScaleCTM(UIGraphicsGetCurrentContext(), scale, scale);
-    [_workingView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    [self.editor.view.layer renderInContext:UIGraphicsGetCurrentContext()];
     
     UIImage *tmp = UIGraphicsGetImageFromCurrentImageContext();
     
