@@ -278,6 +278,16 @@ typedef void (^data_callback)(SRWebSocket *webSocket,  NSData *data);
 
 static __strong NSData *CRLFCRLF;
 
+static SRWebSocket *singletonInstance;
+
++ (SRWebSocket *)sharedInstance
+{
+    if (!singletonInstance)
+        NSLog(@"SlideNavigationController has not been initialized. Either place one in your storyboard or initialize one in code");
+    
+    return singletonInstance;
+}
+
 + (void)initialize;
 {
     CRLFCRLF = [[NSData alloc] initWithBytes:"\r\n\r\n" length:4];
@@ -296,6 +306,8 @@ static __strong NSData *CRLFCRLF;
         [self _SR_commonInit];
     }
     
+    singletonInstance = self;
+
     return self;
 }
 

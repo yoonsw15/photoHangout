@@ -29,6 +29,7 @@
     [self.userName endEditing:YES];
     [self.pwName endEditing:YES];
 }
+
 - (IBAction)loginTapped:(id)sender {
     FriendsViewController *friendsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"friendVC"];
     [self.navigationController pushViewController:friendsVC animated:YES];

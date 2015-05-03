@@ -6,6 +6,7 @@
 //
 
 #import "CLImageToolBase.h"
+#import "SRWebSocket.h"
 
 @interface CLFilterTool : CLImageToolBase
 - (UIImage*)filteredImage:(UIImage*)image withToolInfo:(CLImageToolInfo*)info;

@@ -120,7 +120,7 @@
         NSString *message = [NSString stringWithFormat:@"%@%@",view.toolInfo.title, @"}"];
          [self.friendWebSocket send:message];
         */
-        
+        [[SRWebSocket sharedInstance] send:@"CHANGE THE FILTER"];
         
         [self.editor.imageView performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:NO];
         inProgress = NO;

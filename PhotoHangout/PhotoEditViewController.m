@@ -23,14 +23,9 @@
     self.friendWebSocket = [[SRWebSocket alloc] initWithURLRequest:self.friendURL];
     self.friendWebSocket.delegate = self;
     
-    //[self.imageView setImage:[UIImage imageNamed:@"Marine"]];
-    
-    
-    
     self.filterTool = [[CLFilterTool alloc] init];
     
-    self.editor = [[CLImageEditor alloc] initWithImage:product delegate:self];
-    
+    self.editor = [[CLImageEditor alloc] initWithImage:[UIImage imageNamed:@"Marine"] delegate:self];
     [self presentViewController:self.editor animated:YES completion:nil];
     
 //    double delayInSeconds = 3.0;
@@ -66,7 +61,7 @@
     //Use the proper tool to create the UIImage Product with the ToolInfo
     //Update the imageViewWrapper Image with the product.
     
-    UIImage *product = [self.filterTool filteredImage:[UIImage imageNamed:@"Marine"] withToolInfo:[self createFilterToolInfo:@"CLDefaultProcessFilter"]];
+    UIImage *product = [self.filterTool filteredImage:self.editor.imageViewWrapper.image withToolInfo:[self createFilterToolInfo:@"CLDefaultProcessFilter"]];
     self.editor.imageViewWrapper.image = product;
 }
 
