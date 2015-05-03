@@ -8,9 +8,8 @@
 
 #import "PhotoEditViewController.h"
 #import "CLImageEditor.h"
-#import "CLFilterBase.h"
 
-@interface PhotoEditViewController ()<CLImageEditorDelegate, CLImageEditorTransitionDelegate, CLImageEditorThemeDelegate>
+@interface PhotoEditViewController ()<CLImageEditorDelegate, CLImageEditorTransitionDelegate, CLImageEditorThemeDelegate,SRWebSocketDelegate>
 
 @end
 
@@ -19,20 +18,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.friendURL = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString: @"ws://localhost:8025/photohangout/websocket"]];
     
-    [self.imageView setImage:[UIImage imageNamed:@"Marine"]];
+    self.friendWebSocket = [[SRWebSocket alloc] initWithURLRequest:self.friendURL];
+    self.friendWebSocket.delegate = self;
     
-    //CLImageEditor *editor = [[CLImageEditor alloc] initWithImage:self.imageView.image delegate:self];
+    //[self.imageView setImage:[UIImage imageNamed:@"Marine"]];
     
- 
-    UIImage *product = [CLFilterBase 
-                        filteredImage:self.imageView.image withFilterName:@"CIPhotoEffectInstant"];
     
-    double delayInSeconds = 3.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-         [self.imageView setImage:product];
-    });
+    
+    self.filterTool = [[CLFilterTool alloc] init];
+    
+    self.editor = [[CLImageEditor alloc] initWithImage:product delegate:self];
+    
+    [self presentViewController:self.editor animated:YES completion:nil];
+    
+//    double delayInSeconds = 3.0;
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//
+//        
+//    });
    
 }
 
@@ -41,38 +47,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UIImage*)filteredImage:(UIImage*)image withFilterName:(NSString*)filterName
+- (CLImageToolInfo *)createFilterToolInfo:(NSString *)filterName
 {
-    if([filterName isEqualToString:@"CLDefaultEmptyFilter"]){
-        return image;
-    }
+    CLImageToolInfo *filterToolInfo = [CLImageToolInfo new];
+    filterToolInfo.toolName  = filterName;
+    filterToolInfo.title     = @"None";
+    filterToolInfo.available = YES;
+    filterToolInfo.dockedNumber = 0;
     
-    CIImage *ciImage = [[CIImage alloc] initWithImage:image];
-    CIFilter *filter = [CIFilter filterWithName:filterName keysAndValues:kCIInputImageKey, ciImage, nil];
-    
-    //NSLog(@"%@", [filter attributes]);
-    
-    [filter setDefaults];
-    
-    if([filterName isEqualToString:@"CIVignetteEffect"]){
-        // parameters for CIVignetteEffect
-        CGFloat R = MIN(image.size.width, image.size.height)*image.scale/2;
-        CIVector *vct = [[CIVector alloc] initWithX:image.size.width*image.scale/2 Y:image.size.height*image.scale/2];
-        [filter setValue:vct forKey:@"inputCenter"];
-        [filter setValue:[NSNumber numberWithFloat:0.9] forKey:@"inputIntensity"];
-        [filter setValue:[NSNumber numberWithFloat:R] forKey:@"inputRadius"];
-    }
-    
-    CIContext *context = [CIContext contextWithOptions:@{kCIContextUseSoftwareRenderer : @(NO)}];
-    CIImage *outputImage = [filter outputImage];
-    CGImageRef cgImage = [context createCGImage:outputImage fromRect:[outputImage extent]];
-    
-    UIImage *result = [UIImage imageWithCGImage:cgImage];
-    
-    CGImageRelease(cgImage);
-    
-    return result;
+    return filterToolInfo;
 }
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
+{
+    //Create ToolInfo and use filterTool to use call the method to get the result?
+    
+    //Create CLImageToolInfo with the message.
+    //Use the proper tool to create the UIImage Product with the ToolInfo
+    //Update the imageViewWrapper Image with the product.
+    
+    UIImage *product = [self.filterTool filteredImage:[UIImage imageNamed:@"Marine"] withToolInfo:[self createFilterToolInfo:@"CLDefaultProcessFilter"]];
+    self.editor.imageViewWrapper.image = product;
+}
+
 
 /*
 #pragma mark - Navigation
@@ -83,5 +80,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 @end
+

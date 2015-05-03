@@ -18,6 +18,5 @@
 
 
 @interface CLFilterBase : NSObject<CLImageToolProtocol, CLFilterBaseProtocol>
-+ (UIImage*)filteredImage:(UIImage*)image withFilterName:(NSString*)filterName;
 
 @end

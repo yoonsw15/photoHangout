@@ -17,7 +17,7 @@
 @implementation CLImageEditor
 
 - (id)init
-{
+{   
     return [_CLImageEditorViewController new];
 }
 

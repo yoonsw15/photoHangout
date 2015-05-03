@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhotoHangout/CLImageEditor/ImageTools/CLFilterTool/CLFilterBase.m"
-            timestampString = "451628731.806215"
+            filePath = "PhotoHangout/CLImageEditor/ImageTools/CLFilterTool/CLFilterTool.m"
+            timestampString = "452376892.442885"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "+filteredImage:withFilterName:"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-tappedFilterPanel:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

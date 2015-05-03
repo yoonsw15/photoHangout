@@ -12,8 +12,7 @@
 
 
 @interface CLImageToolInfo()
-@property (nonatomic, strong) NSString *toolName;
-@property (nonatomic, strong) NSArray *subtools;
+
 @end
 
 @implementation CLImageToolInfo (Private)

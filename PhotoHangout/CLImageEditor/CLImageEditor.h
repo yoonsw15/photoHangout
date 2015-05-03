@@ -20,6 +20,7 @@
 @property (nonatomic, weak) id<CLImageEditorDelegate> delegate;
 @property (nonatomic, readonly) CLImageEditorTheme *theme;
 @property (nonatomic, readonly) CLImageToolInfo *toolInfo;
+@property (nonatomic, strong) UIImageView *imageViewWrapper;
 
 - (id)initWithImage:(UIImage*)image;
 - (id)initWithImage:(UIImage*)image delegate:(id<CLImageEditorDelegate>)delegate;
@@ -33,6 +34,8 @@
 
 @protocol CLImageEditorDelegate <NSObject>
 @optional
+- (void)sendToolInfo:(CLImageToolInfo*)info;
+
 - (void)imageEditor:(CLImageEditor*)editor didFinishEdittingWithImage:(UIImage*)image;
 - (void)imageEditorDidCancel:(CLImageEditor*)editor;
 

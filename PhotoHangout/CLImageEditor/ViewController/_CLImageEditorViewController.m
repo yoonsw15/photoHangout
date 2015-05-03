@@ -212,6 +212,7 @@
         _imageView = [UIImageView new];
         [_scrollView addSubview:_imageView];
         [self refreshImageView];
+        self.imageViewWrapper = _imageView;
     }
 }
 
