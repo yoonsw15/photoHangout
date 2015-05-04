@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InitialViewController : UIViewController
+@interface InitialViewController : UIViewController <UITextFieldDelegate, UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *userName;
 @property (strong, nonatomic) IBOutlet UITextField *pwName;
+
+- (IBAction)loginTapped:(id)sender;
+- (IBAction)signUpTapped: (id)sender;
 
 @end
