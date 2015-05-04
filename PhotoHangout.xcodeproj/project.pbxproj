@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		89115A6A1AF6F373003DCFF7 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89115A691AF6F373003DCFF7 /* SignupViewController.m */; };
+		89686AD91AF7127D00FDFA1D /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89686AD81AF7127D00FDFA1D /* SignupViewController.m */; };
 		E32F46761ADC98FB00C51C8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F46751ADC98FB00C51C8F /* main.m */; };
 		E32F46791ADC98FB00C51C8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F46781ADC98FB00C51C8F /* AppDelegate.m */; };
 		E32F46811ADC98FB00C51C8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32F46801ADC98FB00C51C8F /* Images.xcassets */; };
@@ -83,8 +83,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		89115A681AF6F35C003DCFF7 /* SignupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = photoHangout/SignupViewController.h; sourceTree = SOURCE_ROOT; };
-		89115A691AF6F373003DCFF7 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = photoHangout/SignupViewController.m; sourceTree = SOURCE_ROOT; };
+		89686AD71AF7127D00FDFA1D /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		89686AD81AF7127D00FDFA1D /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		E32F46701ADC98FB00C51C8F /* PhotoHangout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoHangout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32F46741ADC98FB00C51C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32F46751ADC98FB00C51C8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -264,8 +264,8 @@
 				E32F469A1ADC9A4A00C51C8F /* InitialViewController.m */,
 				E32F46A31ADCA25F00C51C8F /* PhotoEditViewController.h */,
 				E32F46A41ADCA25F00C51C8F /* PhotoEditViewController.m */,
-				89115A681AF6F35C003DCFF7 /* SignupViewController.h */,
-				89115A691AF6F373003DCFF7 /* SignupViewController.m */,
+				89686AD71AF7127D00FDFA1D /* SignupViewController.h */,
+				89686AD81AF7127D00FDFA1D /* SignupViewController.m */,
 				E32F46801ADC98FB00C51C8F /* Images.xcassets */,
 				E32F46821ADC98FB00C51C8F /* LaunchScreen.xib */,
 				E32F46731ADC98FB00C51C8F /* Supporting Files */,
@@ -685,7 +685,6 @@
 				E35AFF021AF6DC3F00F055F7 /* CLSplashTool.m in Sources */,
 				E32F478A1ADCBDBF00C51C8F /* CLImageToolInfo.m in Sources */,
 				E32F47DA1ADCBE1400C51C8F /* CLSpotEffect.m in Sources */,
-				89115A6A1AF6F373003DCFF7 /* SignupViewController.m in Sources */,
 				E32F47BE1ADCBE0400C51C8F /* CLFilterBase.m in Sources */,
 				E32F47BF1ADCBE0400C51C8F /* CLFilterTool.m in Sources */,
 				E32F46791ADC98FB00C51C8F /* AppDelegate.m in Sources */,
@@ -724,6 +723,7 @@
 				E35AFF081AF6DC3F00F055F7 /* CLTextSettingView.m in Sources */,
 				E32F47B61ADCBDF500C51C8F /* CLToneCurveTool.m in Sources */,
 				E32F47B91ADCBDFC00C51C8F /* CLRotateTool.m in Sources */,
+				89686AD91AF7127D00FDFA1D /* SignupViewController.m in Sources */,
 				E35AFF091AF6DC3F00F055F7 /* CLTextTool.m in Sources */,
 				E32F479B1ADCBDD100C51C8F /* UIImage+Utility.m in Sources */,
 				E32F47891ADCBDBF00C51C8F /* CLImageEditorTheme.m in Sources */,
