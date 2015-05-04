@@ -17,6 +17,50 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    /*
+    CGSize iOSDeviceScreenSize = [[UIScreen mainScreen] bounds].size;
+    
+    if (iOSDeviceScreenSize.height == 480) //display height is 480 (3gs,4, 4s)
+    {
+        // UIStoryboard generation
+        UIStoryboard *iPhone35Storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        // Get initial view controller from Generated UIStoryboard
+        UIViewController *initialViewController = [iPhone35Storyboard instantiateInitialViewController];
+        // Generate window with adjusted size
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        // Set initial view controller of storyboard as rootViewController of window
+        self.window.rootViewController = initialViewController;
+        // see window
+        [self.window makeKeyAndVisible];
+    }
+    else if (iOSDeviceScreenSize.height == 568) //display height is 568 (5/5s)
+    {
+            //Identical
+            UIStoryboard *iPhone4Storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_4inch" bundle:nil];
+            UIViewController *initialViewController = [iPhone4Storyboard instantiateInitialViewController];
+            self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+            self.window.rootViewController = initialViewController;
+            [self.window makeKeyAndVisible];
+    }
+    else if (iOSDeviceScreenSize.height == 667) //display height is 667 (6)
+    {
+        //Identical
+        UIStoryboard *iPhone47Storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_4.7inch" bundle:nil];
+        UIViewController *initialViewController = [iPhone47Storyboard instantiateInitialViewController];
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        self.window.rootViewController = initialViewController;
+        [self.window makeKeyAndVisible];
+    }
+    else if (iOSDeviceScreenSize.height == 736) //display height is 736 (6s)
+    {
+        //Identical
+        UIStoryboard *iPhone55Storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_5.5inch" bundle:nil];
+        UIViewController *initialViewController = [iPhone55Storyboard instantiateInitialViewController];
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        self.window.rootViewController = initialViewController;
+        [self.window makeKeyAndVisible];
+    }
+    */
     return YES;
 }
 

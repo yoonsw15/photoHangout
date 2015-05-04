@@ -8,6 +8,7 @@
 
 #import "InitialViewController.h"
 #import "FriendsViewController.h"
+#import "SignupViewController.h"
 
 @interface InitialViewController ()
 
@@ -33,6 +34,15 @@
 - (IBAction)loginTapped:(id)sender {
     FriendsViewController *friendsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"friendVC"];
     [self.navigationController pushViewController:friendsVC animated:YES];
+}
+- (IBAction)signUpTapped:(id)sender {
+    SignupViewController *signupVC = [self.storyboard instantiateViewControllerWithIdentifier:@"signupVC"];
+    [self.navigationController pushViewController:signupVC animated: YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 /*
