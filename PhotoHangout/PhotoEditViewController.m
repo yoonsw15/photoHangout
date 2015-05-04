@@ -27,9 +27,6 @@
     
     self.filterTool = [[CLFilterTool alloc] init];
     
-    self.editor = [[CLImageEditor alloc] initWithImage:[UIImage imageNamed:@"Marine"] delegate:self];
-    [self presentViewController:self.editor animated:YES completion:nil];
-    
 //    double delayInSeconds = 3.0;
 //    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 //    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -37,6 +34,23 @@
 //        
 //    });
    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.editor = [[CLImageEditor alloc] initWithImage:[UIImage imageNamed:@"Marine"] delegate:self];
+    [self presentViewController:self.editor animated:YES completion:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    if (self.parentViewController == nil) {
+        NSLog(@"PhotoEditViewController has now been closed!");
+        //release stuff here
+        [self.friendWebSocket close];
+    } else {
+        NSLog(@"PhotoEditViewController now loaded!");
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,17 +67,6 @@
     filterToolInfo.dockedNumber = 0;
     
     return filterToolInfo;
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    if (self.parentViewController == nil) {
-        NSLog(@"PhotoEditViewController has now been closed!");
-        //release stuff here
-        [self.friendWebSocket close];
-    } else {
-        NSLog(@"PhotoEditViewController now loaded!");
-    }
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
