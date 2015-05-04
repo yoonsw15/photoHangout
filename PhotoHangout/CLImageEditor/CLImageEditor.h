@@ -21,6 +21,7 @@
 @property (nonatomic, readonly) CLImageEditorTheme *theme;
 @property (nonatomic, readonly) CLImageToolInfo *toolInfo;
 @property (nonatomic, strong) UIImageView *imageViewWrapper;
+@property (nonatomic, strong) UIImageView *orig_imageViewWrapper;
 
 - (id)initWithImage:(UIImage*)image;
 - (id)initWithImage:(UIImage*)image delegate:(id<CLImageEditorDelegate>)delegate;

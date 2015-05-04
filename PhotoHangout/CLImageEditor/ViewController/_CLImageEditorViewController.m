@@ -213,6 +213,7 @@
         [_scrollView addSubview:_imageView];
         [self refreshImageView];
         self.imageViewWrapper = _imageView;
+        self.orig_imageViewWrapper = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Marine"]];
     }
 }
 

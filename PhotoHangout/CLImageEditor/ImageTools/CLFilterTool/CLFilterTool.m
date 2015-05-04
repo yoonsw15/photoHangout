@@ -96,10 +96,10 @@
 
 - (void)tappedFilterPanel:(UITapGestureRecognizer*)sender
 {
-    static BOOL inProgress = NO;
-    
-    if(inProgress){ return; }
-    inProgress = YES;
+//    static BOOL inProgress = NO;
+//    
+//    if(inProgress){ return; }
+//    inProgress = YES;
     
     UIView *view = sender.view;
     
@@ -110,19 +110,21 @@
                      }
      ];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImage *image = [self filteredImage:_originalImage withToolInfo:view.toolInfo];
-        
-        /*
-         WEBSOCKET
-        NSString *message = [NSString stringWithFormat:@"%@%@",view.toolInfo.title, @"}"];
-         [self.friendWebSocket send:message];
-        */
-        //[[SRWebSocket sharedInstance] send:@"CHANGE THE FILTER"];
-        
-        [self.editor.imageView performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:NO];
-        inProgress = NO;
-    });
+    [[SRWebSocket sharedInstance] send:view.toolInfo.toolName];
+    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        UIImage *image = [self filteredImage:_originalImage withToolInfo:view.toolInfo];
+//        
+//        /*
+//         WEBSOCKET
+//        NSString *message = [NSString stringWithFormat:@"%@%@",view.toolInfo.title, @"}"];
+//         [self.friendWebSocket send:message];
+//        */
+//        
+//        
+//        //[self.editor.imageView performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:NO];
+//        inProgress = NO;
+//    });
 }
 
 - (UIImage*)filteredImage:(UIImage*)image withToolInfo:(CLImageToolInfo*)info

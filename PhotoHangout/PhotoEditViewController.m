@@ -18,10 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.friendURL = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString: @"ws://localhost:8025/photohangout/websocket"]];
+    self.friendURL = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString: @"ws://162.243.153.67:8030/photohangout/websocket/ucla"]];
     
     self.friendWebSocket = [[SRWebSocket alloc] initWithURLRequest:self.friendURL];
     self.friendWebSocket.delegate = self;
+    
+    [self.friendWebSocket open];
     
     self.filterTool = [[CLFilterTool alloc] init];
     
@@ -61,8 +63,17 @@
     //Use the proper tool to create the UIImage Product with the ToolInfo
     //Update the imageViewWrapper Image with the product.
     
-    UIImage *product = [self.filterTool filteredImage:self.editor.imageViewWrapper.image withToolInfo:[self createFilterToolInfo:@"CLDefaultProcessFilter"]];
-    self.editor.imageViewWrapper.image = product;
+    if ([message isEqual:@"SUCCESS"]) {
+        
+    }
+    else if ([message isEqual:@"FAIL"]) {
+        
+    }
+    else {
+        UIImage *product = [self.filterTool filteredImage:self.editor.orig_imageViewWrapper.image withToolInfo:[self createFilterToolInfo:message]];
+        self.editor.imageViewWrapper.image = product;
+    }
+    
 }
 
 
