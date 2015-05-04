@@ -23,6 +23,7 @@
     self.friendWebSocket = [[SRWebSocket alloc] initWithURLRequest:self.friendURL];
     self.friendWebSocket.delegate = self;
     
+    NSLog(@"Server has now been connected!");
     [self.friendWebSocket open];
     
     self.filterTool = [[CLFilterTool alloc] init];

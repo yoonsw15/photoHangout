@@ -32,8 +32,30 @@
 }
 
 - (IBAction)loginTapped:(id)sender {
-    FriendsViewController *friendsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"friendVC"];
-    [self.navigationController pushViewController:friendsVC animated:YES];
+    
+    NSString *post = [NSString stringWithFormat:@"{\"username\":\"%@\",\"password\":\"%@\"}", self.userName.text, self.pwName.text];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://162.243.153.67:8080/myapp/accounts/login"]]; // change URL here
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSError *error = [[NSError alloc] init];
+    
+    NSHTTPURLResponse *response = nil;
+    
+    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    if( [response statusCode] >= 200 && [response statusCode] <=300) {
+        FriendsViewController *friendsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"friendVC"];
+        [self.navigationController pushViewController:friendsVC animated:YES];
+    } else {
+        NSLog(@"Connection could not be made");
+    }
+    
 }
 - (IBAction)signUpTapped:(id)sender {
     SignupViewController *signupVC = [self.storyboard instantiateViewControllerWithIdentifier:@"signupVC"];

@@ -8,7 +8,7 @@
 
 #import "SignupViewController.h"
 
-@interface SignupViewController ()
+@interface SignupViewController () <NSURLConnectionDataDelegate>
 
 @end
 
@@ -30,6 +30,45 @@
     [self.emailTextField endEditing:YES];
 }
 - (IBAction)doneBtnPressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    NSString *post = [NSString stringWithFormat:@"{\"username\":\"%@\",\"password\":\"%@\",\"email\":\"%@\"}", self.userNameTextField.text, self.pwTextField.text, self.emailTextField.text];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://162.243.153.67:8080/myapp/accounts/"]]; // change URL here
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSError *error = [[NSError alloc] init];
+    
+    NSHTTPURLResponse *response = nil;
+    
+    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    if( [response statusCode] >= 200 && [response statusCode] <=300) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        NSLog(@"Connection could not be made");
+    }
+    
+    
 }
+
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData*)data
+{
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    
+}
+
 @end
