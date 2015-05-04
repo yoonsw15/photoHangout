@@ -55,6 +55,17 @@
     return filterToolInfo;
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    if (self.parentViewController == nil) {
+        NSLog(@"PhotoEditViewController has now been closed!");
+        //release stuff here
+        [self.friendWebSocket close];
+    } else {
+        NSLog(@"PhotoEditViewController now loaded!");
+    }
+}
+
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
     //Create ToolInfo and use filterTool to use call the method to get the result?
