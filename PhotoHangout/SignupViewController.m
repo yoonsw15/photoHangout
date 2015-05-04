@@ -29,6 +29,9 @@
     [self.pwTextField endEditing:YES];
     [self.emailTextField endEditing:YES];
 }
+- (IBAction)cancelBtnPressed:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (IBAction)doneBtnPressed:(id)sender {
     
     NSString *post = [NSString stringWithFormat:@"{\"username\":\"%@\",\"password\":\"%@\",\"email\":\"%@\"}", self.userNameTextField.text, self.pwTextField.text, self.emailTextField.text];

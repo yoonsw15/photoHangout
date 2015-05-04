@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SRWebsocket.h"
 
-@interface SignupViewController : UITableViewController
+@interface SignupViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField;
 @property (strong, nonatomic) IBOutlet UITextField *pwTextField;
