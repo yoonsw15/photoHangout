@@ -292,6 +292,7 @@ static NSString* const kCLDrawToolEraserIconName = @"eraserIconAssetsName";
 
 - (void)drawingViewDidPan:(UIPanGestureRecognizer*)sender
 {
+    //NSLog(@"HEREPAN");
     CGPoint currentDraggingPosition = [sender locationInView:_drawingView];
     
     if(sender.state == UIGestureRecognizerStateBegan){
@@ -306,6 +307,11 @@ static NSString* const kCLDrawToolEraserIconName = @"eraserIconAssetsName";
 
 -(void)drawLine:(CGPoint)from to:(CGPoint)to
 {
+    //NSLog(@"FROM: %f,%f", from.x, from.y);
+    //NSLog(@"TO: %f,%f", to.x, to.y);
+    
+    CIColor *color = [CIColor colorWithCGColor:_strokePreview.backgroundColor.CGColor];
+    
     CGSize size = _drawingView.frame.size;
     UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
     
@@ -315,6 +321,10 @@ static NSString* const kCLDrawToolEraserIconName = @"eraserIconAssetsName";
     
     CGFloat strokeWidth = MAX(1, _widthSlider.value * 65);
     UIColor *strokeColor = _strokePreview.backgroundColor;
+    
+    NSString *drawingMessage = [NSString stringWithFormat:@"DrawingFrom|#%f|#%f|#DrawingTo|#%f|#%f|#Width|#%f|#Color|#%f|#%f|#%f|#%f",from.x,from.y,to.x,to.y,_widthSlider.value,color.red,color.green, color.blue, color.alpha];
+    
+    [[SRWebSocket sharedInstance] send:drawingMessage];
     
     CGContextSetLineWidth(context, strokeWidth);
     CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
@@ -345,6 +355,31 @@ static NSString* const kCLDrawToolEraserIconName = @"eraserIconAssetsName";
     UIGraphicsEndImageContext();
     
     return tmp;
+}
+
+- (UIImage *)externalDrawLine:(CGPoint)from to:(CGPoint)to WithWidth:(CGFloat)width withColor:(UIColor*)color onOriginal:(UIImageView *)imageView
+{
+    CGSize size = imageView.bounds.size;
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    [imageView.image drawAtPoint:CGPointZero];
+    
+    CGFloat strokeWidth = MAX(1, width * 65);
+    
+    CGContextSetLineWidth(context, strokeWidth);
+    CGContextSetStrokeColorWithColor(context, color.CGColor);
+    CGContextSetLineCap(context, kCGLineCapRound);
+    
+    CGContextMoveToPoint(context, from.x, from.y);
+    CGContextAddLineToPoint(context, to.x, to.y);
+    CGContextStrokePath(context);
+    
+    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    return result;
 }
 
 @end

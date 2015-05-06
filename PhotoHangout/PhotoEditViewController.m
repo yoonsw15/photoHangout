@@ -27,7 +27,7 @@
     [self.friendWebSocket open];
     
     self.filterTool = [[CLFilterTool alloc] init];
-    
+    self.drawTool = [[CLDrawTool alloc]init];
 //    double delayInSeconds = 3.0;
 //    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 //    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -46,9 +46,9 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     if (self.parentViewController == nil) {
-        NSLog(@"PhotoEditViewController has now been closed!");
+//        NSLog(@"PhotoEditViewController has now been closed!");
         //release stuff here
-        [self.friendWebSocket close];
+        //[self.friendWebSocket close];
     } else {
         NSLog(@"PhotoEditViewController now loaded!");
     }
@@ -72,6 +72,7 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
+    NSLog(@"Here");
     //Create ToolInfo and use filterTool to use call the method to get the result?
     
     //Create CLImageToolInfo with the message.
@@ -83,6 +84,21 @@
     }
     else if ([message isEqual:@"FAIL"]) {
         
+    }
+    else if ([message hasPrefix:@"DrawingFrom"]){
+        NSArray *drawingData = [message componentsSeparatedByString: @"|#"];
+        CGFloat fromX = [drawingData[1] floatValue];
+        CGFloat fromY = [drawingData[2] floatValue];
+        CGFloat toX = [drawingData[4] floatValue];
+        CGFloat toY = [drawingData[5] floatValue];
+        
+        CGFloat width = [drawingData[7] floatValue];
+        CGFloat red = [drawingData[9] floatValue];
+        CGFloat green = [drawingData[10] floatValue];
+        CGFloat blue = [drawingData[11] floatValue];
+        CGFloat alpha = [drawingData[12] floatValue];
+        UIImage *product = [self.drawTool externalDrawLine:CGPointMake(fromX, fromY) to:CGPointMake(toX, toY) WithWidth:width withColor:[UIColor colorWithRed:red green:green blue:blue alpha:alpha] onOriginal:self.editor.imageViewWrapper];
+        self.editor.imageViewWrapper.image = product;
     }
     else {
         UIImage *product = [self.filterTool filteredImage:self.editor.orig_imageViewWrapper.image withToolInfo:[self createFilterToolInfo:message]];

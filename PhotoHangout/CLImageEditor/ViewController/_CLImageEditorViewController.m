@@ -551,17 +551,17 @@
 - (void)swapToolBarWithEditting:(BOOL)editting
 {
     [self swapMenuViewWithEditting:editting];
-    //[self swapNavigationBarWithEditting:editting];
+    [self swapNavigationBarWithEditting:editting];
     
     if(self.currentTool){
         UINavigationItem *item  = [[UINavigationItem alloc] initWithTitle:self.currentTool.toolInfo.title];
         item.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[CLImageEditorTheme localizedString:@"CLImageEditor_OKBtnTitle" withDefault:@"OK"] style:UIBarButtonItemStyleDone target:self action:@selector(pushedDoneBtn:)];
         item.leftBarButtonItem  = [[UIBarButtonItem alloc] initWithTitle:[CLImageEditorTheme localizedString:@"CLImageEditor_BackBtnTitle" withDefault:@"Back"] style:UIBarButtonItemStylePlain target:self action:@selector(pushedCancelBtn:)];
         
-        //[_navigationBar pushNavigationItem:item animated:(self.navigationController==nil)];
+        [_navigationBar pushNavigationItem:item animated:(self.navigationController==nil)];
     }
     else{
-        //[_navigationBar popNavigationItemAnimated:(self.navigationController==nil)];
+        [_navigationBar popNavigationItemAnimated:(self.navigationController==nil)];
     }
 }
 

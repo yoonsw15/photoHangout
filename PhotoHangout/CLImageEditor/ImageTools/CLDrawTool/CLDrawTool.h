@@ -6,7 +6,9 @@
 //
 
 #import "CLImageToolBase.h"
+#import "SRWebSocket.h"
 
 @interface CLDrawTool : CLImageToolBase
+- (UIImage *)externalDrawLine:(CGPoint)from to:(CGPoint)to WithWidth:(CGFloat)width withColor:(UIColor*)color onOriginal:(UIImageView *)imageView;
 
 @end
