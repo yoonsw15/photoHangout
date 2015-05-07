@@ -108,7 +108,9 @@
         NSString *imageName = [filePath substringFromIndex:[filePath length]-7];
         [self.emoticonTool externalAddEmoticon:imageName withEditor:self.editor];
     }
-
+    else if([message isEqualToString:@"StickerRemoved"]) {
+        [self.stickerTool removeSticker];
+    }
     else if([message hasPrefix:@"StickerScaledTo"]) {
         NSArray *stickerData = [message componentsSeparatedByString: @"|#"];
         CGFloat newScale = [stickerData[1] floatValue];
