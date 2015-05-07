@@ -10,12 +10,15 @@
 #import "CLImageEditor.h"
 #import "CLFilterTool.h"
 #import "CLDrawTool.h"
+#import "CLStickerTool.h"
 #import "SRWebsocket.h"
 
 @interface PhotoEditViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) CLFilterTool *filterTool;
 @property (strong, nonatomic) CLDrawTool *drawTool;
+@property (strong, nonatomic) CLStickerTool *stickerTool;
+
 @property (nonatomic, strong) SRWebSocket *friendWebSocket;
 @property (nonatomic, strong) NSURLRequest *friendURL;
 @property (nonatomic, strong) CLImageEditor *editor;

@@ -188,7 +188,7 @@
 		E35AFEED1AF6DC3F00F055F7 /* CLSplashTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSplashTool.h; sourceTree = "<group>"; };
 		E35AFEEE1AF6DC3F00F055F7 /* CLSplashTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSplashTool.m; sourceTree = "<group>"; };
 		E35AFEF01AF6DC3F00F055F7 /* CLStickerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLStickerTool.h; sourceTree = "<group>"; };
-		E35AFEF11AF6DC3F00F055F7 /* CLStickerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLStickerTool.m; path = ../OptionalImageTools/CLStickerTool/CLStickerTool.m; sourceTree = "<group>"; };
+		E35AFEF11AF6DC3F00F055F7 /* CLStickerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLStickerTool.m; sourceTree = "<group>"; };
 		E35AFEF31AF6DC3F00F055F7 /* CLFontPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFontPickerView.h; sourceTree = "<group>"; };
 		E35AFEF41AF6DC3F00F055F7 /* CLFontPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFontPickerView.m; sourceTree = "<group>"; };
 		E35AFEF51AF6DC3F00F055F7 /* CLPickerDrum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPickerDrum.h; sourceTree = "<group>"; };
@@ -267,7 +267,6 @@
 				89686AD71AF7127D00FDFA1D /* SignupViewController.h */,
 				89686AD81AF7127D00FDFA1D /* SignupViewController.m */,
 				E32F46801ADC98FB00C51C8F /* Images.xcassets */,
-				E35AFEF11AF6DC3F00F055F7 /* CLStickerTool.m */,
 				E32F46821ADC98FB00C51C8F /* LaunchScreen.xib */,
 				E32F46731ADC98FB00C51C8F /* Supporting Files */,
 			);
@@ -558,6 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				E35AFEF01AF6DC3F00F055F7 /* CLStickerTool.h */,
+				E35AFEF11AF6DC3F00F055F7 /* CLStickerTool.m */,
 			);
 			path = CLStickerTool;
 			sourceTree = "<group>";

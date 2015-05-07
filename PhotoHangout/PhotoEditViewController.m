@@ -27,7 +27,8 @@
     [self.friendWebSocket open];
     
     self.filterTool = [[CLFilterTool alloc] init];
-    self.drawTool = [[CLDrawTool alloc]init];
+    self.drawTool = [[CLDrawTool alloc] init];
+    self.stickerTool = [[CLStickerTool alloc] init];
 //    double delayInSeconds = 3.0;
 //    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 //    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -84,6 +85,27 @@
     }
     else if ([message isEqual:@"FAIL"]) {
         
+    }
+    else if([message isEqualToString:@"StickerRemoved"]) {
+        [self.stickerTool removeSticker];
+    }
+    else if([message hasPrefix:@"StickerScaledTo"]) {
+        NSArray *stickerData = [message componentsSeparatedByString: @"|#"];
+        CGFloat newScale = [stickerData[1] floatValue];
+        CGFloat newArg = [stickerData[2] floatValue];
+        [self.stickerTool updateStickerScaleTo:newScale WithArg:newArg];
+    }
+    else if([message hasPrefix:@"StickerPannedTo"]) {
+        NSArray *stickerData = [message componentsSeparatedByString: @"|#"];
+        CGFloat newX = [stickerData[1] floatValue];
+        CGFloat newY = [stickerData[2] floatValue];
+        [self.stickerTool updateStickerCenterTo:CGPointMake(newX, newY)];
+    }
+    else if([message hasPrefix:@"StickerCreateAt"]) {
+        NSArray *stickerData = [message componentsSeparatedByString: @"|#"];
+        NSString *filePath = stickerData[1];
+        NSString *imageName = [filePath substringFromIndex:[filePath length]-7];
+        [self.stickerTool externalAddSticker:imageName withEditor:self.editor];
     }
     else if ([message hasPrefix:@"DrawingFrom"]){
         NSArray *drawingData = [message componentsSeparatedByString: @"|#"];

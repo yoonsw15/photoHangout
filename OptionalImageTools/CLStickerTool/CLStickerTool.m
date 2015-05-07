@@ -12,15 +12,6 @@
 static NSString* const kCLStickerToolStickerPathKey = @"stickerPath";
 static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
 
-@interface _CLStickerView : UIView
-+ (void)setActiveStickerView:(_CLStickerView*)view;
-- (UIImageView*)imageView;
-- (id)initWithImage:(UIImage *)image tool:(CLStickerTool*)tool;
-- (void)setScale:(CGFloat)scale;
-@end
-
-
-
 @implementation CLStickerTool
 {
     UIImage *_originalImage;
@@ -120,6 +111,11 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
     });
 }
 
+//- (_CLStickerView *)getStickerView
+//{
+//    return self.stickerView;
+//}
+
 #pragma mark-
 
 - (void)setStickerMenu
@@ -158,22 +154,23 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
     NSString *filePath = view.userInfo[@"filePath"];
     if(filePath){
         _CLStickerView *view = [[_CLStickerView alloc] initWithImage:[UIImage imageWithContentsOfFile:filePath] tool:self];
+        
+//        self.stickerView = view;
+        
         CGFloat ratio = MIN( (0.5 * self.editor.view.width) / view.width, (0.5 * self.editor.view.height) / view.height);
         [view setScale:ratio];
         view.center = CGPointMake(self.editor.view.width/2, self.editor.view.height/2);
         
             /*WEBSOCKET
              
-             send out the position and the sticker name. 
              
-             
-             
-             
+             send out the sticker name.
              */
         
-    
-        [self.editor.view addSubview:view];
-        [_CLStickerView setActiveStickerView:view];
+        [[SRWebSocket sharedInstance] send:[NSString stringWithFormat:@"StickerCreateAt|#%@",filePath]];
+        
+        //[self.editor.view addSubview:view];
+        //[_CLStickerView setActiveStickerView:view];
     }
     
     view.alpha = 0.2;
@@ -201,6 +198,32 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
     return tmp;
 }
 
+- (void)externalAddSticker:(NSString *)imageName withEditor:(_CLImageEditorViewController *)editor
+{
+    NSString *imagePath = [NSString stringWithFormat:@"CLImageEditor.bundle/CLStickerTool/stickers/%@",imageName];
+    _CLStickerView *view = [[_CLStickerView alloc] initWithImage:[UIImage imageNamed:imagePath] tool:self];
+    CGFloat ratio = MIN( (0.5 * editor.view.width) / view.width, (0.5 * editor.view.height) / view.height);
+    [view setScale:ratio];
+    view.center = CGPointMake(editor.view.width/2, editor.view.height/2);
+    [editor.view addSubview:view];
+    self.stickerView = view;
+}
+
+- (void)updateStickerCenterTo:(CGPoint)center
+{
+    self.stickerView.center = center;
+}
+
+- (void)updateStickerScaleTo:(CGFloat)scale WithArg:(CGFloat)arg
+{
+    [self.stickerView setArg:arg];
+    [self.stickerView setScale:scale];
+}
+
+- (void)removeSticker
+{
+    [self.stickerView removeFromSuperview];
+}
 @end
 
 
@@ -313,6 +336,8 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
     
     [[self class] setActiveStickerView:nextTarget];
     [self removeFromSuperview];
+    
+    [[SRWebSocket sharedInstance] send:@"StickerRemoved"];
 }
 
 - (void)setAvtive:(BOOL)active
@@ -320,6 +345,11 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
     _deleteButton.hidden = !active;
     _circleView.hidden = !active;
     _imageView.layer.borderWidth = (active) ? 1/_scale : 0;
+}
+
+- (void)setArg:(CGFloat)arg
+{
+    _arg = arg;
 }
 
 - (void)setScale:(CGFloat)scale
@@ -361,6 +391,8 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
     }
     self.center = CGPointMake(_initialPoint.x + p.x, _initialPoint.y + p.y);
     
+    [[SRWebSocket sharedInstance] send:[NSString stringWithFormat:@"StickerPannedTo|#%f|#%f",self.center.x,self.center.y]];
+    
     /*WEBSOCKET
      
      send out the position of new center as they're panning.
@@ -393,6 +425,7 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
     _arg   = _initialArg + arg - tmpA;
     [self setScale:MAX(_initialScale * R / tmpR, 0.2)];
     
+    [[SRWebSocket sharedInstance] send:[NSString stringWithFormat:@"StickerScaledTo|#%f|#%f",_scale,_arg]];
     /*WEBSOCKET
      
      send out the arg and scale values.
