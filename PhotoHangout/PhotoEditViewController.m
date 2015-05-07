@@ -29,6 +29,7 @@
     self.filterTool = [[CLFilterTool alloc] init];
     self.drawTool = [[CLDrawTool alloc] init];
     self.stickerTool = [[CLStickerTool alloc] init];
+    self.emoticonTool = [[CLEmoticonTool alloc]init];
 //    double delayInSeconds = 3.0;
 //    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 //    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -86,9 +87,28 @@
     else if ([message isEqual:@"FAIL"]) {
         
     }
-    else if([message isEqualToString:@"StickerRemoved"]) {
-        [self.stickerTool removeSticker];
+    else if([message isEqualToString:@"EmoticonRemoved"]) {
+        [self.emoticonTool removeEmoticon];
     }
+    else if([message hasPrefix:@"EmoticonScaledTo"]) {
+        NSArray *emoticonData = [message componentsSeparatedByString: @"|#"];
+        CGFloat newScale = [emoticonData[1] floatValue];
+        CGFloat newArg = [emoticonData[2] floatValue];
+        [self.emoticonTool updateEmoticonScaleTo:newScale WithArg:newArg];
+    }
+    else if([message hasPrefix:@"EmoticonPannedTo"]) {
+        NSArray *emoticonData = [message componentsSeparatedByString: @"|#"];
+        CGFloat newX = [emoticonData[1] floatValue];
+        CGFloat newY = [emoticonData[2] floatValue];
+        [self.emoticonTool updateEmoticonCenterTo:CGPointMake(newX, newY)];
+    }
+    else if([message hasPrefix:@"EmoticonCreateAt"]) {
+        NSArray *emoticonData = [message componentsSeparatedByString: @"|#"];
+        NSString *filePath = emoticonData[1];
+        NSString *imageName = [filePath substringFromIndex:[filePath length]-7];
+        [self.emoticonTool externalAddEmoticon:imageName withEditor:self.editor];
+    }
+
     else if([message hasPrefix:@"StickerScaledTo"]) {
         NSArray *stickerData = [message componentsSeparatedByString: @"|#"];
         CGFloat newScale = [stickerData[1] floatValue];

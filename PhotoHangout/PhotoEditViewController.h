@@ -11,6 +11,7 @@
 #import "CLFilterTool.h"
 #import "CLDrawTool.h"
 #import "CLStickerTool.h"
+#import "CLEmoticonTool.h"
 #import "SRWebsocket.h"
 
 @interface PhotoEditViewController : UIViewController
@@ -18,6 +19,7 @@
 @property (strong, nonatomic) CLFilterTool *filterTool;
 @property (strong, nonatomic) CLDrawTool *drawTool;
 @property (strong, nonatomic) CLStickerTool *stickerTool;
+@property (strong, nonatomic) CLEmoticonTool *emoticonTool;
 
 @property (nonatomic, strong) SRWebSocket *friendWebSocket;
 @property (nonatomic, strong) NSURLRequest *friendURL;

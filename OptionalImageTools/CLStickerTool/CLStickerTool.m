@@ -198,7 +198,7 @@ static NSString* const kCLStickerToolDeleteIconName = @"deleteIconAssetsName";
     return tmp;
 }
 
-- (void)externalAddSticker:(NSString *)imageName withEditor:(_CLImageEditorViewController *)editor
+- (void)externalAddSticker:(NSString *)imageName withEditor:(CLImageEditor *)editor
 {
     NSString *imagePath = [NSString stringWithFormat:@"CLImageEditor.bundle/CLStickerTool/stickers/%@",imageName];
     _CLStickerView *view = [[_CLStickerView alloc] initWithImage:[UIImage imageNamed:imagePath] tool:self];

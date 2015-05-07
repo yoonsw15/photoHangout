@@ -12,7 +12,7 @@
 
 @interface CLStickerTool : CLImageToolBase
 @property (nonatomic, strong) _CLStickerView* stickerView;
-- (void)externalAddSticker:(NSString *)imageName withEditor:(_CLImageEditorViewController *)editor;
+- (void)externalAddSticker:(NSString *)imageName withEditor:(CLImageEditor *)editor;
 - (void)updateStickerCenterTo:(CGPoint)center;
 - (void)updateStickerScaleTo:(CGFloat)scale WithArg:(CGFloat)arg;
 - (void)removeSticker;

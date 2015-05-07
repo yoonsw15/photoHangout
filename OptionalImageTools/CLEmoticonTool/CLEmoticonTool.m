@@ -13,20 +13,11 @@
 static NSString* const kCLEmoticonToolEmoticonPathKey = @"EmoticonPath";
 static NSString* const kCLEmoticonToolDeleteIconName = @"deleteIconAssetsName";
 
-@interface _CLEmoticonView : UIView
-+ (void)setActiveEmoticonView:(_CLEmoticonView*)view;
-- (UIImageView*)imageView;
-- (id)initWithImage:(UIImage *)image tool:(CLEmoticonTool*)tool;
-- (void)setScale:(CGFloat)scale;
-@end
-
-
-
 @implementation CLEmoticonTool
 {
     UIImage *_originalImage;
     
-    UIView *_workingView;
+    //UIView *_workingView;
     
     UIScrollView *_menuScroll;
 }
@@ -72,16 +63,16 @@ static NSString* const kCLEmoticonToolDeleteIconName = @"deleteIconAssetsName";
 {
     _originalImage = self.editor.imageView.image;
     
-    [self.editor fixZoomScaleWithAnimated:YES];
+    //[self.editor fixZoomScaleWithAnimated:YES];
     
     _menuScroll = [[UIScrollView alloc] initWithFrame:self.editor.menuView.frame];
     _menuScroll.backgroundColor = self.editor.menuView.backgroundColor;
     _menuScroll.showsHorizontalScrollIndicator = NO;
     [self.editor.view addSubview:_menuScroll];
     
-    _workingView = [[UIView alloc] initWithFrame:[self.editor.view convertRect:self.editor.imageView.frame fromView:self.editor.imageView.superview]];
-    _workingView.clipsToBounds = YES;
-    [self.editor.view addSubview:_workingView];
+//    _workingView = [[UIView alloc] initWithFrame:[self.editor.view convertRect:self.editor.imageView.frame fromView:self.editor.imageView.superview]];
+//    _workingView.clipsToBounds = YES;
+//    [self.editor.view addSubview:_workingView];
     
     [self setEmoticonMenu];
     
@@ -96,7 +87,7 @@ static NSString* const kCLEmoticonToolDeleteIconName = @"deleteIconAssetsName";
 {
     [self.editor resetZoomScaleWithAnimated:YES];
     
-    [_workingView removeFromSuperview];
+    //[_workingView removeFromSuperview];
     
     [UIView animateWithDuration:kCLImageToolAnimationDuration
                      animations:^{
@@ -158,12 +149,13 @@ static NSString* const kCLEmoticonToolDeleteIconName = @"deleteIconAssetsName";
     NSString *filePath = view.userInfo[@"filePath"];
     if(filePath){
         _CLEmoticonView *view = [[_CLEmoticonView alloc] initWithImage:[UIImage imageWithContentsOfFile:filePath] tool:self];
-        CGFloat ratio = MIN( (0.5 * _workingView.width) / view.width, (0.5 * _workingView.height) / view.height);
+        CGFloat ratio = MIN( (0.5 * self.editor.view.width) / view.width, (0.5 * self.editor.view.height) / view.height);
         [view setScale:ratio];
-        view.center = CGPointMake(_workingView.width/2, _workingView.height/2);
+        view.center = CGPointMake(self.editor.view.width/2, self.editor.view.height/2);
         
-        [_workingView addSubview:view];
-        [_CLEmoticonView setActiveEmoticonView:view];
+        [[SRWebSocket sharedInstance] send:[NSString stringWithFormat:@"EmoticonCreateAt|#%@",filePath]];
+//        [_workingView addSubview:view];
+//        [_CLEmoticonView setActiveEmoticonView:view];
     }
     
     view.alpha = 0.2;
@@ -180,9 +172,9 @@ static NSString* const kCLEmoticonToolDeleteIconName = @"deleteIconAssetsName";
     
     [image drawAtPoint:CGPointZero];
     
-    CGFloat scale = image.size.width / _workingView.width;
+    CGFloat scale = image.size.width / self.editor.view.width;
     CGContextScaleCTM(UIGraphicsGetCurrentContext(), scale, scale);
-    [_workingView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    [self.editor.view.layer renderInContext:UIGraphicsGetCurrentContext()];
     
     UIImage *tmp = UIGraphicsGetImageFromCurrentImageContext();
     
@@ -190,6 +182,34 @@ static NSString* const kCLEmoticonToolDeleteIconName = @"deleteIconAssetsName";
     
     return tmp;
 }
+
+- (void)externalAddEmoticon:(NSString *)imageName withEditor:(CLImageEditor *)editor
+{
+    NSString *imagePath = [NSString stringWithFormat:@"CLImageEditor.bundle/CLEmoticonTool/Emoticons/%@",imageName];
+    _CLEmoticonView *view = [[_CLEmoticonView alloc] initWithImage:[UIImage imageNamed:imagePath] tool:self];
+    CGFloat ratio = MIN( (0.5 * editor.view.width) / view.width, (0.5 * editor.view.height) / view.height);
+    [view setScale:ratio];
+    view.center = CGPointMake(editor.view.width/2, editor.view.height/2);
+    [editor.view addSubview:view];
+    self.emoticonView = view;
+}
+
+- (void)updateEmoticonCenterTo:(CGPoint)center
+{
+    self.emoticonView.center = center;
+}
+
+- (void)updateEmoticonScaleTo:(CGFloat)scale WithArg:(CGFloat)arg
+{
+    [self.emoticonView setArg:arg];
+    [self.emoticonView setScale:scale];
+}
+
+- (void)removeEmoticon
+{
+    [self.emoticonView removeFromSuperview];
+}
+
 
 @end
 
@@ -303,6 +323,8 @@ static NSString* const kCLEmoticonToolDeleteIconName = @"deleteIconAssetsName";
     
     [[self class] setActiveEmoticonView:nextTarget];
     [self removeFromSuperview];
+    
+    [[SRWebSocket sharedInstance] send:@"EmoticonRemoved"];
 }
 
 - (void)setAvtive:(BOOL)active
@@ -310,6 +332,11 @@ static NSString* const kCLEmoticonToolDeleteIconName = @"deleteIconAssetsName";
     _deleteButton.hidden = !active;
     _circleView.hidden = !active;
     _imageView.layer.borderWidth = (active) ? 1/_scale : 0;
+}
+
+- (void)setArg:(CGFloat)arg
+{
+    _arg = arg;
 }
 
 - (void)setScale:(CGFloat)scale
@@ -350,6 +377,8 @@ static NSString* const kCLEmoticonToolDeleteIconName = @"deleteIconAssetsName";
         _initialPoint = self.center;
     }
     self.center = CGPointMake(_initialPoint.x + p.x, _initialPoint.y + p.y);
+    
+    [[SRWebSocket sharedInstance] send:[NSString stringWithFormat:@"EmoticonPannedTo|#%f|#%f",self.center.x,self.center.y]];
 }
 
 - (void)circleViewDidPan:(UIPanGestureRecognizer*)sender
@@ -375,6 +404,8 @@ static NSString* const kCLEmoticonToolDeleteIconName = @"deleteIconAssetsName";
     
     _arg   = _initialArg + arg - tmpA;
     [self setScale:MAX(_initialScale * R / tmpR, 0.2)];
+    
+    [[SRWebSocket sharedInstance] send:[NSString stringWithFormat:@"EmoticonScaledTo|#%f|#%f",_scale,_arg]];
 }
 
 @end
