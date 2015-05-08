@@ -338,7 +338,7 @@ static NSString* const kCLDrawToolEraserIconName = @"eraserIconAssetsName";
     CGContextAddLineToPoint(context, to.x, to.y);
     CGContextStrokePath(context);
     
-    _drawingView.image = UIGraphicsGetImageFromCurrentImageContext();
+    //_drawingView.image = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
 }
@@ -357,14 +357,14 @@ static NSString* const kCLDrawToolEraserIconName = @"eraserIconAssetsName";
     return tmp;
 }
 
-- (UIImage *)externalDrawLine:(CGPoint)from to:(CGPoint)to WithWidth:(CGFloat)width withColor:(UIColor*)color onOriginal:(UIImageView *)imageView
+- (UIImage *)externalDrawLine:(CGPoint)from to:(CGPoint)to WithWidth:(CGFloat)width withColor:(UIColor*)color withEditor:(CLImageEditor *)editor
 {
-    CGSize size = imageView.bounds.size;
+    CGSize size = editor.drawingView.bounds.size;
     UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    [imageView.image drawAtPoint:CGPointZero];
+    [editor.drawingView.image drawAtPoint:CGPointZero];
     
     CGFloat strokeWidth = MAX(1, width * 65);
     
@@ -376,8 +376,8 @@ static NSString* const kCLDrawToolEraserIconName = @"eraserIconAssetsName";
     CGContextAddLineToPoint(context, to.x, to.y);
     CGContextStrokePath(context);
     
-    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
-    
+    editor.drawingView.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *result = nil;
     UIGraphicsEndImageContext();
     return result;
 }

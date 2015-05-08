@@ -213,6 +213,8 @@
         [_scrollView addSubview:_imageView];
         [self refreshImageView];
         self.imageViewWrapper = _imageView;
+        self.drawingView = [[UIImageView alloc] initWithFrame:_imageView.bounds];
+        [self.imageViewWrapper addSubview:self.drawingView];
         self.orig_imageViewWrapper = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Marine"]];
     }
 }

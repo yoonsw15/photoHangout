@@ -141,8 +141,8 @@
         CGFloat green = [drawingData[10] floatValue];
         CGFloat blue = [drawingData[11] floatValue];
         CGFloat alpha = [drawingData[12] floatValue];
-        UIImage *product = [self.drawTool externalDrawLine:CGPointMake(fromX, fromY) to:CGPointMake(toX, toY) WithWidth:width withColor:[UIColor colorWithRed:red green:green blue:blue alpha:alpha] onOriginal:self.editor.imageViewWrapper];
-        self.editor.imageViewWrapper.image = product;
+        UIImage *product = [self.drawTool externalDrawLine:CGPointMake(fromX, fromY) to:CGPointMake(toX, toY) WithWidth:width withColor:[UIColor colorWithRed:red green:green blue:blue alpha:alpha] withEditor:self.editor];
+//        self.editor.imageViewWrapper.image = product;
     }
     else {
         UIImage *product = [self.filterTool filteredImage:self.editor.orig_imageViewWrapper.image withToolInfo:[self createFilterToolInfo:message]];

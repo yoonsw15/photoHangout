@@ -1114,8 +1114,8 @@ static const uint8_t SRPayloadLenMask   = 0x7F;
         !_sentClose) {
         _sentClose = YES;
             
-        [_outputStream close];
-        [_inputStream close];
+//        [_outputStream close];
+//        [_inputStream close];
         
         
         for (NSArray *runLoop in [_scheduledRunloops copy]) {

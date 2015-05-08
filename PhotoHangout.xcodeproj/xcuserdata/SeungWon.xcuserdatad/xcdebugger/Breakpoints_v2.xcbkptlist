@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PhotoHangout/CLImageEditor/ViewController/_CLImageEditorViewController.m"
-            timestampString = "452398180.617747"
+            timestampString = "452746587.438215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "551"
-            endingLineNumber = "551"
+            startingLineNumber = "553"
+            endingLineNumber = "553"
             landmarkName = "-swapToolBarWithEditting:"
             landmarkType = "5">
          </BreakpointContent>
@@ -167,23 +167,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "364"
             endingLineNumber = "364"
-            landmarkName = "-externalDrawLine:to:WithWidth:withColor:onOriginal:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoHangout/CLImageEditor/ImageTools/CLDrawTool/CLDrawTool.m"
-            timestampString = "452598596.012742"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
-            landmarkName = "-externalDrawLine:to:WithWidth:withColor:onOriginal:"
+            landmarkName = "-externalDrawLine:to:WithWidth:withColor:withEditor:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -216,6 +200,38 @@
             startingLineNumber = "130"
             endingLineNumber = "130"
             landmarkName = "-webSocket:didReceiveMessage:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoHangout/SocketRocket/SRWebSocket.m"
+            timestampString = "452747547.034099"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1118"
+            endingLineNumber = "1118"
+            landmarkName = "-_pumpWriting"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotoHangout/SocketRocket/SRWebSocket.m"
+            timestampString = "452747547.486382"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1117"
+            endingLineNumber = "1117"
+            landmarkName = "-_pumpWriting"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
