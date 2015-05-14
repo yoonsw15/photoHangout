@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QPK-1M-Nmx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JGH-tj-aAT">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -106,6 +106,52 @@
             </objects>
             <point key="canvasLocation" x="154.5" y="81.5"/>
         </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="g3E-aP-x19">
+            <objects>
+                <viewController id="JGH-tj-aAT" customClass="MenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y0r-G5-BY3"/>
+                        <viewControllerLayoutGuide type="bottom" id="JFx-UE-bfI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3X7-ny-w43">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnb-VY-EsZ">
+                                <rect key="frame" x="199" y="217" width="203" height="30"/>
+                                <state key="normal" title="Take Photo and Invite Friends">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapOnCamera:" destination="JGH-tj-aAT" eventType="touchUpInside" id="0RS-FS-fQN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZyW-aX-cfe">
+                                <rect key="frame" x="250" y="315" width="100" height="30"/>
+                                <state key="normal" title="Join a Session">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="QPK-1M-Nmx" kind="presentation" id="0xy-TG-WLD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Cnb-VY-EsZ" firstAttribute="top" secondItem="y0r-G5-BY3" secondAttribute="bottom" constant="197" id="376-6W-z7N"/>
+                            <constraint firstAttribute="centerX" secondItem="Cnb-VY-EsZ" secondAttribute="centerX" constant="-0.5" id="3b6-u7-gXK"/>
+                            <constraint firstAttribute="centerY" secondItem="Cnb-VY-EsZ" secondAttribute="centerY" constant="68" id="Dof-BC-FJI"/>
+                            <constraint firstAttribute="centerX" secondItem="ZyW-aX-cfe" secondAttribute="centerX" id="Iyp-J1-iTT"/>
+                            <constraint firstItem="ZyW-aX-cfe" firstAttribute="top" secondItem="Cnb-VY-EsZ" secondAttribute="bottom" constant="68" id="je7-5l-jwy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZJD-pM-CFO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ONL-lY-iFD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="667" y="793"/>
+        </scene>
         <!--Friends View Controller-->
         <scene sceneID="Lkp-h2-Grf">
             <objects>
@@ -167,12 +213,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SlX-4I-R3j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1203.75" y="206.625"/>
+            <point key="canvasLocation" x="1789" y="160"/>
         </scene>
         <!--Photo Edit View Controller-->
         <scene sceneID="vE9-72-DNe">
             <objects>
-                <viewController id="mKL-eK-TXm" customClass="PhotoEditViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoEdit" id="mKL-eK-TXm" customClass="PhotoEditViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vUP-uR-1FR"/>
                         <viewControllerLayoutGuide type="bottom" id="8iI-C9-wIy"/>
@@ -186,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6L6-4T-BRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1949" y="89"/>
+            <point key="canvasLocation" x="2488" y="160"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LQZ-6f-q4f">

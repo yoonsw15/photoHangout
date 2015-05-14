@@ -25,4 +25,5 @@
 @property (nonatomic, strong) NSURLRequest *friendURL;
 @property (nonatomic, strong) CLImageEditor *editor;
 
+@property (nonatomic, strong) UIImage *currentImage;
 @end
