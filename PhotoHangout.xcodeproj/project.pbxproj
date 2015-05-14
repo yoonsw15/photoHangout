@@ -58,6 +58,7 @@
 		E32F47F11ADCC4FD00C51C8F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F47F01ADCC4FD00C51C8F /* Security.framework */; };
 		E32F47F31ADCC50200C51C8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F47F21ADCC50200C51C8F /* Foundation.framework */; };
 		E32F47F51ADCC9BA00C51C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32F47F41ADCC9BA00C51C8F /* Main.storyboard */; };
+		E33D64931B049B3500DB3A2D /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E33D64921B049B3500DB3A2D /* MenuViewController.m */; };
 		E35AFEFF1AF6DC3F00F055F7 /* CLEmoticonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEE51AF6DC3F00F055F7 /* CLEmoticonTool.m */; };
 		E35AFF001AF6DC3F00F055F7 /* CLGPUImageVignetteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEE81AF6DC3F00F055F7 /* CLGPUImageVignetteFilter.m */; };
 		E35AFF011AF6DC3F00F055F7 /* CLResizeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEEB1AF6DC3F00F055F7 /* CLResizeTool.m */; };
@@ -179,6 +180,8 @@
 		E32F47F01ADCC4FD00C51C8F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E32F47F21ADCC50200C51C8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E32F47F41ADCC9BA00C51C8F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E33D64911B049B3500DB3A2D /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		E33D64921B049B3500DB3A2D /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		E35AFEE41AF6DC3F00F055F7 /* CLEmoticonTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEmoticonTool.h; sourceTree = "<group>"; };
 		E35AFEE51AF6DC3F00F055F7 /* CLEmoticonTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEmoticonTool.m; sourceTree = "<group>"; };
 		E35AFEE71AF6DC3F00F055F7 /* CLGPUImageVignetteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGPUImageVignetteFilter.h; sourceTree = "<group>"; };
@@ -264,6 +267,8 @@
 				E32F469A1ADC9A4A00C51C8F /* InitialViewController.m */,
 				E32F46A31ADCA25F00C51C8F /* PhotoEditViewController.h */,
 				E32F46A41ADCA25F00C51C8F /* PhotoEditViewController.m */,
+				E33D64911B049B3500DB3A2D /* MenuViewController.h */,
+				E33D64921B049B3500DB3A2D /* MenuViewController.m */,
 				89686AD71AF7127D00FDFA1D /* SignupViewController.h */,
 				89686AD81AF7127D00FDFA1D /* SignupViewController.m */,
 				E32F46801ADC98FB00C51C8F /* Images.xcassets */,
@@ -721,6 +726,7 @@
 				E32F47C51ADCBE0D00C51C8F /* CLEffectTool.m in Sources */,
 				E32F47B11ADCBDED00C51C8F /* CLImageToolInfo+Private.m in Sources */,
 				E35AFF081AF6DC3F00F055F7 /* CLTextSettingView.m in Sources */,
+				E33D64931B049B3500DB3A2D /* MenuViewController.m in Sources */,
 				E32F47B61ADCBDF500C51C8F /* CLToneCurveTool.m in Sources */,
 				E32F47B91ADCBDFC00C51C8F /* CLRotateTool.m in Sources */,
 				89686AD91AF7127D00FDFA1D /* SignupViewController.m in Sources */,

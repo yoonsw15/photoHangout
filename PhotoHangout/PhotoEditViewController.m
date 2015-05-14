@@ -29,20 +29,15 @@
     self.filterTool = [[CLFilterTool alloc] init];
     self.drawTool = [[CLDrawTool alloc] init];
     self.stickerTool = [[CLStickerTool alloc] init];
-    self.emoticonTool = [[CLEmoticonTool alloc]init];
-//    double delayInSeconds = 3.0;
-//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//
-//        
-//    });
-   
+    self.emoticonTool = [[CLEmoticonTool alloc] init];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.editor = [[CLImageEditor alloc] initWithImage:[UIImage imageNamed:@"Marine"] delegate:self];
-    [self presentViewController:self.editor animated:YES completion:nil];
+    if (self.editor == nil) {
+        self.editor = [[CLImageEditor alloc] initWithImage:self.currentImage delegate:self];
+        [self presentViewController:self.editor animated:YES completion:nil];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -141,8 +136,7 @@
         CGFloat green = [drawingData[10] floatValue];
         CGFloat blue = [drawingData[11] floatValue];
         CGFloat alpha = [drawingData[12] floatValue];
-        UIImage *product = [self.drawTool externalDrawLine:CGPointMake(fromX, fromY) to:CGPointMake(toX, toY) WithWidth:width withColor:[UIColor colorWithRed:red green:green blue:blue alpha:alpha] withEditor:self.editor];
-//        self.editor.imageViewWrapper.image = product;
+        [self.drawTool externalDrawLine:CGPointMake(fromX, fromY) to:CGPointMake(toX, toY) WithWidth:width withColor:[UIColor colorWithRed:red green:green blue:blue alpha:alpha] withEditor:self.editor];
     }
     else {
         UIImage *product = [self.filterTool filteredImage:self.editor.orig_imageViewWrapper.image withToolInfo:[self createFilterToolInfo:message]];
@@ -151,6 +145,11 @@
     
 }
 
+- (void)imageEditorDidCancel:(CLImageEditor*)editor
+{
+    [self.editor dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 /*
 #pragma mark - Navigation
