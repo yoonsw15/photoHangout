@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "PhotoEditViewController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+
 
 @interface MenuViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIActionSheetDelegate>
 
 @property (nonatomic,strong) UIImagePickerController *camera;
+@property (nonatomic,strong) UIImagePickerController *album;
+@property (nonatomic,strong) ALAssetsLibrary *library;
 
 @end
