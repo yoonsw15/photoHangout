@@ -41,7 +41,7 @@
 
 - (IBAction)didTabOnAlbum:(id)sender {
     UIImagePickerController *album = [[UIImagePickerController alloc] init];
-    album.allowsEditing = NO;
+    album.allowsEditing = YES;
     album.delegate = self;
     album.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
@@ -80,7 +80,7 @@
         }
         
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.allowsEditing = NO;
+        picker.allowsEditing = YES;
         picker.delegate   = self;
         picker.sourceType = type;
         
