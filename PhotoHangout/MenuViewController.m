@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,6 +39,16 @@
     [self presentViewController:camera animated:YES completion:nil];
 }
 
+- (IBAction)didTabOnAlbum:(id)sender {
+    UIImagePickerController *album = [[UIImagePickerController alloc] init];
+    album.allowsEditing = YES;
+    album.delegate = self;
+    album.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    
+    [self presentViewController:album animated:YES completion:nil];
+}
+
 #pragma mark- ImagePicker delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -46,11 +57,14 @@
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
+    
     PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
     photoVC.currentImage = image;
     
     [self presentViewController:photoVC animated:YES completion:nil];
 }
+
+
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -66,9 +80,10 @@
         }
         
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.allowsEditing = NO;
+        picker.allowsEditing = YES;
         picker.delegate   = self;
         picker.sourceType = type;
+        
         
         [self presentViewController:picker animated:YES completion:nil];
     }
