@@ -11,6 +11,7 @@
 		E30E91E51B072056004459C5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E30E91E41B072056004459C5 /* libsqlite3.dylib */; };
 		E30E91E71B07205C004459C5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E30E91E61B07205C004459C5 /* libz.dylib */; };
 		E30E91E91B072063004459C5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30E91E81B072063004459C5 /* SystemConfiguration.framework */; };
+		E30E91EC1B0720E9004459C5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = E30E91EB1B0720E9004459C5 /* Constants.m */; };
 		E32F46761ADC98FB00C51C8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F46751ADC98FB00C51C8F /* main.m */; };
 		E32F46791ADC98FB00C51C8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F46781ADC98FB00C51C8F /* AppDelegate.m */; };
 		E32F46811ADC98FB00C51C8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32F46801ADC98FB00C51C8F /* Images.xcassets */; };
@@ -132,6 +133,8 @@
 		E30E91E41B072056004459C5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		E30E91E61B07205C004459C5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E30E91E81B072063004459C5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E30E91EA1B0720E9004459C5 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		E30E91EB1B0720E9004459C5 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		E32F46701ADC98FB00C51C8F /* PhotoHangout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoHangout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32F46741ADC98FB00C51C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32F46751ADC98FB00C51C8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -371,6 +374,8 @@
 		E32F46721ADC98FB00C51C8F /* PhotoHangout */ = {
 			isa = PBXGroup;
 			children = (
+				E30E91EA1B0720E9004459C5 /* Constants.h */,
+				E30E91EB1B0720E9004459C5 /* Constants.m */,
 				E32F46771ADC98FB00C51C8F /* AppDelegate.h */,
 				E32F46781ADC98FB00C51C8F /* AppDelegate.m */,
 				E3FFE8BA1AEB3ECE00A75504 /* FriendsViewController.h */,
@@ -910,6 +915,7 @@
 				E32F47B61ADCBDF500C51C8F /* CLToneCurveTool.m in Sources */,
 				E32F47B91ADCBDFC00C51C8F /* CLRotateTool.m in Sources */,
 				89686AD91AF7127D00FDFA1D /* SignupViewController.m in Sources */,
+				E30E91EC1B0720E9004459C5 /* Constants.m in Sources */,
 				E35AFF091AF6DC3F00F055F7 /* CLTextTool.m in Sources */,
 				E32F479B1ADCBDD100C51C8F /* UIImage+Utility.m in Sources */,
 				E32F47891ADCBDBF00C51C8F /* CLImageEditorTheme.m in Sources */,

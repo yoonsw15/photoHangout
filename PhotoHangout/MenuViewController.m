@@ -7,6 +7,9 @@
 //
 
 #import "MenuViewController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <AWSS3/AWSS3.h>
+#import "Constants.h"
 
 @interface MenuViewController () 
 
@@ -56,12 +59,23 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSString *fileName = [[[NSProcessInfo processInfo] globallyUniqueString] stringByAppendingString:@".png"];
+    NSString *filePath = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"upload"] stringByAppendingPathComponent:fileName];
+    NSData * imageData = UIImagePNGRepresentation(image);
     
+    [imageData writeToFile:filePath atomically:YES];
     
-    PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
-    photoVC.currentImage = image;
+    AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
+    uploadRequest.body = [NSURL fileURLWithPath:filePath];
+    uploadRequest.key = fileName;
+    uploadRequest.bucket = S3BucketName;
     
-    [self presentViewController:photoVC animated:YES completion:nil];
+    [self upload:uploadRequest];
+    
+//    PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
+//    photoVC.currentImage = image;
+//    
+//    [self presentViewController:photoVC animated:YES completion:nil];
 }
 
 
@@ -87,6 +101,51 @@
         
         [self presentViewController:picker animated:YES completion:nil];
     }
+}
+
+- (void)upload:(AWSS3TransferManagerUploadRequest *)uploadRequest {
+    AWSS3TransferManager *transferManager = [AWSS3TransferManager defaultS3TransferManager];
+    
+//    __weak UploadViewController *weakSelf = self;
+    [[transferManager upload:uploadRequest] continueWithBlock:^id(BFTask *task) {
+        if (task.error) {
+            if ([task.error.domain isEqualToString:AWSS3TransferManagerErrorDomain]) {
+                switch (task.error.code) {
+                    case AWSS3TransferManagerErrorCancelled:
+                    case AWSS3TransferManagerErrorPaused:
+                    {
+//                        dispatch_async(dispatch_get_main_queue(), ^{
+//                            UploadViewController *strongSelf = weakSelf;
+//                            NSUInteger index = [strongSelf.collection indexOfObject:uploadRequest];
+//                            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index
+//                                                                        inSection:0];
+//                            [strongSelf.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+//                        });
+                    }
+                        break;
+                        
+                    default:
+                        NSLog(@"Upload failed: [%@]", task.error);
+                        break;
+                }
+            } else {
+                NSLog(@"Upload failed: [%@]", task.error);
+            }
+        }
+        
+        if (task.result) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                UploadViewController *strongSelf = weakSelf;
+//                NSUInteger index = [strongSelf.collection indexOfObject:uploadRequest];
+//                [strongSelf.collection replaceObjectAtIndex:index withObject:uploadRequest.body];
+//                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index
+//                                                            inSection:0];
+//                [strongSelf.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+//            });
+        }
+        
+        return nil;
+    }];
 }
 
 /*
