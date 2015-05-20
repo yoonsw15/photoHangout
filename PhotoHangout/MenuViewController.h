@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "PhotoEditViewController.h"
-#import "HostSessionViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
 

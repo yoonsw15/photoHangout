@@ -60,16 +60,6 @@
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
     [self uploadImage:image];
-    
-    // ERASED: initially a photoVC render
-//    PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
-//    photoVC.currentImage = image;
-//    
-//    [self presentViewController:photoVC animated:YES completion:nil];
-    
-    HostSessionViewController *hostSessionVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"HostSessionVC"];
-    
-    [self presentViewController:hostSessionVC animated:YES completion:nil];
 
 }
 
