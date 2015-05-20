@@ -56,6 +56,8 @@
         [ud setObject:self.userName.text forKey:@"UserName"];
         [ud synchronize];
         
+        [self saveUserID];
+        
         MenuViewController *menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"menuVC"];
         [self.navigationController pushViewController:menuVC animated:YES];
     } else {
@@ -71,6 +73,28 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)saveUserID
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *userName = [ud objectForKey:@"UserName"];
+    NSDictionary * userIDDict = [[NSDictionary alloc] init];
+    NSURL * userIDURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://162.243.153.67:8080/myapp/accounts/%@", userName]];
+    NSData * userJSON =[NSData dataWithContentsOfURL:userIDURL];
+    
+    if(userJSON != nil) {
+        NSError *error = nil;
+        userIDDict = [NSJSONSerialization JSONObjectWithData:userJSON options:NSJSONReadingMutableContainers error:&error];
+        
+        NSString *userIDStr = [userIDDict objectForKey:@"userId"];
+        
+        [ud setObject:userIDStr forKey:@"UserId"];
+        [ud synchronize];
+        
+        if (error == nil) {
+        }
+    }
 }
 
 /*

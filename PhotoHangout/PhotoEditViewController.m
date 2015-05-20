@@ -35,8 +35,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     if (self.editor == nil) {
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://162.243.153.67:8080/myapp/photos/gayweather/45"]]];
-        self.currentImage = image;
+//        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://162.243.153.67:8080/myapp/photos/gayweather/45"]]];
+//        self.currentImage = image;
         self.editor = [[CLImageEditor alloc] initWithImage:self.currentImage delegate:self];
         [self presentViewController:self.editor animated:YES completion:nil];
     }

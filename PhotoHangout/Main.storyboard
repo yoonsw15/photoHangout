@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0OE-28-oHk">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -228,6 +228,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SlX-4I-R3j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1789" y="160"/>
+        </scene>
+        <!--Invite Friends View Controller-->
+        <scene sceneID="E9I-ep-ZfX">
+            <objects>
+                <viewController storyboardIdentifier="inviteFriendsVC" id="gFj-PX-Bl1" customClass="InviteFriendsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lxD-fq-YBw"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rul-J4-Jdr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ith-1K-Y4j">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xi-Uf-qyT">
+                                <rect key="frame" x="277" y="550" width="37" height="30"/>
+                                <state key="normal" title="Invite">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="inviteTapped:" destination="gFj-PX-Bl1" eventType="touchUpInside" id="DNa-dN-ZRh"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2jj-uL-dwB">
+                                <rect key="frame" x="0.0" y="45" width="600" height="505"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InviteFriends" id="GvC-gY-X7J">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GvC-gY-X7J" id="Adb-2b-pPt">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="gFj-PX-Bl1" id="qZ9-Om-qse"/>
+                                    <outlet property="delegate" destination="gFj-PX-Bl1" id="eIb-gt-ZvC"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="1xi-Uf-qyT" secondAttribute="centerX" constant="4.5" id="DHw-go-1iC"/>
+                            <constraint firstItem="Rul-J4-Jdr" firstAttribute="top" secondItem="2jj-uL-dwB" secondAttribute="bottom" constant="50" id="E2o-XG-aaX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2jj-uL-dwB" secondAttribute="trailing" constant="-16" id="OSj-hx-evg"/>
+                            <constraint firstItem="Rul-J4-Jdr" firstAttribute="top" secondItem="1xi-Uf-qyT" secondAttribute="bottom" constant="20" id="Rdv-Vg-y6c"/>
+                            <constraint firstItem="2jj-uL-dwB" firstAttribute="top" secondItem="lxD-fq-YBw" secondAttribute="bottom" constant="25" id="aPm-YE-bS8"/>
+                            <constraint firstItem="2jj-uL-dwB" firstAttribute="leading" secondItem="ith-1K-Y4j" secondAttribute="leadingMargin" constant="-16" id="kYv-MP-nGi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="2jj-uL-dwB" id="Ijj-SD-y6c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Oe-uD-DaO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1793" y="842"/>
         </scene>
         <!--Photo Edit View Controller-->
         <scene sceneID="vE9-72-DNe">
@@ -535,7 +592,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTN-RK-OZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1202.5" y="-512.5"/>
+            <point key="canvasLocation" x="985.5" y="-576.5"/>
         </scene>
     </scenes>
 </document>
