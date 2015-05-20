@@ -56,7 +56,7 @@
         [ud synchronize];
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        NSLog(@"Connection could not be made");
+        NSLog(@"Connection could not be made SignUp Failed");
     }
     
     

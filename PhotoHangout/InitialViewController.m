@@ -61,7 +61,7 @@
         MenuViewController *menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"menuVC"];
         [self.navigationController pushViewController:menuVC animated:YES];
     } else {
-        NSLog(@"Connection could not be made");
+        NSLog(@"Connection could not be made Login failed");
     }
     
 }

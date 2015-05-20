@@ -305,6 +305,63 @@
             </objects>
             <point key="canvasLocation" x="2488" y="160"/>
         </scene>
+        <!--Host Session View Controller-->
+        <scene sceneID="1f9-1R-g9g">
+            <objects>
+                <viewController storyboardIdentifier="HostSessionVC" id="xgO-p0-n6a" customClass="HostSessionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RvK-dK-s2b"/>
+                        <viewControllerLayoutGuide type="bottom" id="iG7-zB-uAR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aAt-Fc-hr7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rur-k8-qhg">
+                                <rect key="frame" x="0.0" y="32" width="600" height="535"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HostSession" id="UxM-SZ-Q7d">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UxM-SZ-Q7d" id="UqJ-Iy-AQq">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="xgO-p0-n6a" id="d8c-ei-SYc"/>
+                                    <outlet property="delegate" destination="xgO-p0-n6a" id="zhI-Hl-QkG"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0J-MP-NDJ">
+                                <rect key="frame" x="258" y="570" width="85" height="30"/>
+                                <state key="normal" title="Start Editing">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="editingTapped:" destination="xgO-p0-n6a" eventType="touchUpInside" id="X42-5g-Uef"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rur-k8-qhg" firstAttribute="leading" secondItem="aAt-Fc-hr7" secondAttribute="leadingMargin" constant="-16" id="But-Mf-I1P"/>
+                            <constraint firstItem="iG7-zB-uAR" firstAttribute="top" secondItem="d0J-MP-NDJ" secondAttribute="bottom" id="RZc-Ud-8Q8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rur-k8-qhg" secondAttribute="trailing" constant="-16" id="paf-ck-GAt"/>
+                            <constraint firstAttribute="centerX" secondItem="d0J-MP-NDJ" secondAttribute="centerX" constant="-0.5" id="uKr-p5-Xap"/>
+                            <constraint firstItem="iG7-zB-uAR" firstAttribute="top" secondItem="rur-k8-qhg" secondAttribute="bottom" constant="33" id="v5n-67-4Hb"/>
+                            <constraint firstItem="rur-k8-qhg" firstAttribute="top" secondItem="RvK-dK-s2b" secondAttribute="bottom" constant="12" id="vhc-iU-DCt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="invitedFriendTable" destination="rur-k8-qhg" id="t5c-qZ-qhe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xdq-uu-gUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2494" y="844"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="LQZ-6f-q4f">
             <objects>

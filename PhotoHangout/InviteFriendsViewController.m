@@ -7,6 +7,8 @@
 //
 
 #import "InviteFriendsViewController.h"
+#import "HostSessionViewController.h"
+
 NSString *const kInviteFriendsCellIdentifier = @"InviteFriends";
 NSString *const kInviteFriendTableCellNibName = @"InviteFriendsTableViewCell";
 @implementation InviteFriendsViewController
@@ -17,6 +19,8 @@ NSString *const kInviteFriendTableCellNibName = @"InviteFriendsTableViewCell";
     
     //use the server to get the online friends and instantiate the array.
     self.selectedUsers = [NSMutableArray array];
+    self.selectedUserNames = [NSMutableArray array];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -104,7 +108,15 @@ NSString *const kInviteFriendTableCellNibName = @"InviteFriendsTableViewCell";
         NSString *sessionID = [ud objectForKey:@"SessionId"];
         
         [self inviteServerCallFor:userId UserName:userName SessionID:sessionID];
+        
+        [self.selectedUserNames addObject:userName];
     }
+    
+    HostSessionViewController *hostSessionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HostSessionVC"];
+    hostSessionVC.acceptedFriends = self.selectedUserNames;
+    
+    [self presentViewController:hostSessionVC animated:YES completion:nil];
+    
 }
 
 - (void)inviteServerCallFor:(NSString *)userID UserName:(NSString *)userName SessionID:(NSString *)sessionID
@@ -128,7 +140,7 @@ NSString *const kInviteFriendTableCellNibName = @"InviteFriendsTableViewCell";
     if( [response statusCode] >= 200 && [response statusCode] <=300) {
         NSLog(@"Invitation created for %@", userName);
     } else {
-        NSLog(@"Connection could not be made");
+        NSLog(@"Connection could not be made Invitation Failed");
     }
 }
 

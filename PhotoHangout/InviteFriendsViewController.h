@@ -14,4 +14,5 @@
 @property (nonatomic, strong) NSMutableArray *allUsers;
 @property (nonatomic, strong) UIImage *sessionImage;
 @property (nonatomic, strong) NSMutableArray *selectedUsers;
+@property (nonatomic, strong) NSMutableArray *selectedUserNames;
 @end
