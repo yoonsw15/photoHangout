@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    self.userName = [ud objectForKey:@"UserName"];
 
 }
 
@@ -57,6 +59,7 @@
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
+    [self uploadImage:image];
     
     PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
     photoVC.currentImage = image;
@@ -87,6 +90,67 @@
         
         [self presentViewController:picker animated:YES completion:nil];
     }
+}
+
+- (void)uploadImage:(UIImage *)image
+{
+    
+    NSString *urlPathWithLogin = [NSString stringWithFormat:@"http://162.243.153.67:8080/myapp/photos/%@/upload", self.userName ];
+    
+    NSURL *url = [NSURL URLWithString:[urlPathWithLogin stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+    
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [request setHTTPShouldHandleCookies:NO];
+    [request setTimeoutInterval:60];
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *boundary = @"unique-consistent-string";
+    
+    // set Content-Type in HTTP header
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    // post body
+    NSMutableData *body = [NSMutableData data];
+    
+    // add params (all params are strings)
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=%@\r\n\r\n", @"imageCaption"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%@\r\n", @"Some Caption"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // add image data
+    if (imageData) {
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=%@; filename=imageName.jpg\r\n", @"data"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:imageData];
+        [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // setting the body of the post to the reqeust
+    [request setHTTPBody:body];
+    
+    // set the content-length
+    NSString *postLength = [NSString stringWithFormat:@"%d", [body length]];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if(data.length > 0)
+        {
+            NSDictionary * photoIDDictionary = [[NSDictionary alloc] init];
+            photoIDDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+            
+            NSInteger photoID = (NSInteger)[photoIDDictionary objectForKey:@"photoId"];
+            NSLog(@"Photo ID is %ld", (long)photoID);
+        }
+    }];
 }
 
 /*

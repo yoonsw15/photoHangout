@@ -51,7 +51,10 @@
     NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     if( [response statusCode] >= 200 && [response statusCode] <=300) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        [ud setObject:self.userNameTextField.text forKey:@"UserName"];
+        [ud synchronize];
+        [self.navigationController popViewControllerAnimated:YES];
     } else {
         NSLog(@"Connection could not be made");
     }
