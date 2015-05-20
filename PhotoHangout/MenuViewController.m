@@ -7,6 +7,7 @@
 //
 
 #import "MenuViewController.h"
+#import "InviteFriendsViewController.h"
 
 @interface MenuViewController () 
 
@@ -19,7 +20,7 @@
     // Do any additional setup after loading the view.
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     self.userName = [ud objectForKey:@"UserName"];
-
+    self.userID = [ud objectForKey:@"UserId"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,10 +62,15 @@
     
     [self uploadImage:image];
     
-    PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
-    photoVC.currentImage = image;
+    InviteFriendsViewController *inviteFriendsVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"inviteFriendsVC"];
+    inviteFriendsVC.sessionImage = image;
     
-    [self presentViewController:photoVC animated:YES completion:nil];
+    [self presentViewController:inviteFriendsVC animated:YES completion:nil];
+    
+//    PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
+//    photoVC.currentImage = image;
+//    
+//    [self presentViewController:photoVC animated:YES completion:nil];
 }
 
 
@@ -147,10 +153,44 @@
             NSDictionary * photoIDDictionary = [[NSDictionary alloc] init];
             photoIDDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
             
-            NSInteger photoID = (NSInteger)[photoIDDictionary objectForKey:@"photoId"];
-            NSLog(@"Photo ID is %ld", (long)photoID);
+            NSNumber *photoID = (NSNumber *)[photoIDDictionary objectForKey:@"photoId"];
+            NSLog(@"Photo ID is %tu", [photoID integerValue]);
+            
+            [self createSession:self.userID photoId:photoID];
         }
     }];
+}
+
+- (void)createSession:(NSString *)userID photoId:(NSNumber *)photoId
+{
+    NSString *post = [NSString stringWithFormat:@"{\"ownerId\":\"%@\",\"photoId\":\"%tu\"}",  userID, [photoId integerValue]];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://162.243.153.67:8080/myapp/sessions"]]; // change URL here
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSError *error = [[NSError alloc] init];
+    
+    NSHTTPURLResponse *response = nil;
+    
+    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    if( [response statusCode] >= 200 && [response statusCode] <=300) {
+        NSDictionary *sessionDict = [NSJSONSerialization JSONObjectWithData:urlData options:NSJSONReadingMutableContainers error:&error];
+        
+        NSString *sessionID = [sessionDict objectForKey:@"sessionId"];
+        
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        [ud setObject: sessionID forKey:@"SessionId"];
+        [ud synchronize];
+        
+    } else {
+        NSLog(@"Connection could not be made");
+    }
 }
 
 /*

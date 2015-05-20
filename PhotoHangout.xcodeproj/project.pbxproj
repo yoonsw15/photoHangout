@@ -59,6 +59,7 @@
 		E32F47F31ADCC50200C51C8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F47F21ADCC50200C51C8F /* Foundation.framework */; };
 		E32F47F51ADCC9BA00C51C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32F47F41ADCC9BA00C51C8F /* Main.storyboard */; };
 		E33D64931B049B3500DB3A2D /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E33D64921B049B3500DB3A2D /* MenuViewController.m */; };
+		E33DA57D1B0D055F009C7A52 /* InviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E33DA57C1B0D055F009C7A52 /* InviteFriendsViewController.m */; };
 		E35AFEFF1AF6DC3F00F055F7 /* CLEmoticonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEE51AF6DC3F00F055F7 /* CLEmoticonTool.m */; };
 		E35AFF001AF6DC3F00F055F7 /* CLGPUImageVignetteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEE81AF6DC3F00F055F7 /* CLGPUImageVignetteFilter.m */; };
 		E35AFF011AF6DC3F00F055F7 /* CLResizeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEEB1AF6DC3F00F055F7 /* CLResizeTool.m */; };
@@ -182,6 +183,8 @@
 		E32F47F41ADCC9BA00C51C8F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E33D64911B049B3500DB3A2D /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		E33D64921B049B3500DB3A2D /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		E33DA57B1B0D055F009C7A52 /* InviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendsViewController.h; sourceTree = "<group>"; };
+		E33DA57C1B0D055F009C7A52 /* InviteFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendsViewController.m; sourceTree = "<group>"; };
 		E35AFEE41AF6DC3F00F055F7 /* CLEmoticonTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEmoticonTool.h; sourceTree = "<group>"; };
 		E35AFEE51AF6DC3F00F055F7 /* CLEmoticonTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEmoticonTool.m; sourceTree = "<group>"; };
 		E35AFEE71AF6DC3F00F055F7 /* CLGPUImageVignetteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGPUImageVignetteFilter.h; sourceTree = "<group>"; };
@@ -265,6 +268,8 @@
 				E32F47F41ADCC9BA00C51C8F /* Main.storyboard */,
 				E32F46991ADC9A4A00C51C8F /* InitialViewController.h */,
 				E32F469A1ADC9A4A00C51C8F /* InitialViewController.m */,
+				E33DA57B1B0D055F009C7A52 /* InviteFriendsViewController.h */,
+				E33DA57C1B0D055F009C7A52 /* InviteFriendsViewController.m */,
 				E32F46A31ADCA25F00C51C8F /* PhotoEditViewController.h */,
 				E32F46A41ADCA25F00C51C8F /* PhotoEditViewController.m */,
 				E33D64911B049B3500DB3A2D /* MenuViewController.h */,
@@ -738,6 +743,7 @@
 				E32F46A51ADCA25F00C51C8F /* PhotoEditViewController.m in Sources */,
 				E32F47991ADCBDD100C51C8F /* CLSplineInterpolator.m in Sources */,
 				E35AFF011AF6DC3F00F055F7 /* CLResizeTool.m in Sources */,
+				E33DA57D1B0D055F009C7A52 /* InviteFriendsViewController.m in Sources */,
 				E32F47881ADCBDBF00C51C8F /* CLImageEditor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
