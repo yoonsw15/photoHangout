@@ -60,6 +60,7 @@
 		E32F47F51ADCC9BA00C51C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E32F47F41ADCC9BA00C51C8F /* Main.storyboard */; };
 		E33D64931B049B3500DB3A2D /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E33D64921B049B3500DB3A2D /* MenuViewController.m */; };
 		E33DA57D1B0D055F009C7A52 /* InviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E33DA57C1B0D055F009C7A52 /* InviteFriendsViewController.m */; };
+		E33DA5801B0D14EC009C7A52 /* HostSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E33DA57F1B0D14EC009C7A52 /* HostSessionViewController.m */; };
 		E35AFEFF1AF6DC3F00F055F7 /* CLEmoticonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEE51AF6DC3F00F055F7 /* CLEmoticonTool.m */; };
 		E35AFF001AF6DC3F00F055F7 /* CLGPUImageVignetteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEE81AF6DC3F00F055F7 /* CLGPUImageVignetteFilter.m */; };
 		E35AFF011AF6DC3F00F055F7 /* CLResizeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEEB1AF6DC3F00F055F7 /* CLResizeTool.m */; };
@@ -185,6 +186,8 @@
 		E33D64921B049B3500DB3A2D /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		E33DA57B1B0D055F009C7A52 /* InviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendsViewController.h; sourceTree = "<group>"; };
 		E33DA57C1B0D055F009C7A52 /* InviteFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendsViewController.m; sourceTree = "<group>"; };
+		E33DA57E1B0D14EC009C7A52 /* HostSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostSessionViewController.h; sourceTree = "<group>"; };
+		E33DA57F1B0D14EC009C7A52 /* HostSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostSessionViewController.m; sourceTree = "<group>"; };
 		E35AFEE41AF6DC3F00F055F7 /* CLEmoticonTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEmoticonTool.h; sourceTree = "<group>"; };
 		E35AFEE51AF6DC3F00F055F7 /* CLEmoticonTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEmoticonTool.m; sourceTree = "<group>"; };
 		E35AFEE71AF6DC3F00F055F7 /* CLGPUImageVignetteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGPUImageVignetteFilter.h; sourceTree = "<group>"; };
@@ -276,6 +279,8 @@
 				E33D64921B049B3500DB3A2D /* MenuViewController.m */,
 				89686AD71AF7127D00FDFA1D /* SignupViewController.h */,
 				89686AD81AF7127D00FDFA1D /* SignupViewController.m */,
+				E33DA57E1B0D14EC009C7A52 /* HostSessionViewController.h */,
+				E33DA57F1B0D14EC009C7A52 /* HostSessionViewController.m */,
 				E32F46801ADC98FB00C51C8F /* Images.xcassets */,
 				E32F46821ADC98FB00C51C8F /* LaunchScreen.xib */,
 				E32F46731ADC98FB00C51C8F /* Supporting Files */,
@@ -707,6 +712,7 @@
 				E35AFF071AF6DC3F00F055F7 /* CLTextLabel.m in Sources */,
 				E32F47D91ADCBE1400C51C8F /* CLPosterizeEffect.m in Sources */,
 				E32F47E31ADCBE2F00C51C8F /* CLBlurTool.m in Sources */,
+				E33DA5801B0D14EC009C7A52 /* HostSessionViewController.m in Sources */,
 				E32F47C41ADCBE0D00C51C8F /* CLEffectBase.m in Sources */,
 				E32F46761ADC98FB00C51C8F /* main.m in Sources */,
 				E32F47D51ADCBE1400C51C8F /* CLGloomEffect.m in Sources */,

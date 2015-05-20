@@ -189,7 +189,7 @@
         [ud synchronize];
         
     } else {
-        NSLog(@"Connection could not be made");
+        NSLog(@"Connection could not be made Creating Session Failed");
     }
 }
 
