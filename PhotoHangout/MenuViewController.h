@@ -16,5 +16,5 @@
 @property (nonatomic,strong) UIImagePickerController *camera;
 @property (nonatomic,strong) UIImagePickerController *album;
 @property (nonatomic,strong) ALAssetsLibrary *library;
-
+@property (nonatomic,strong) NSString *userName;
 @end

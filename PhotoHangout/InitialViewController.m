@@ -9,6 +9,7 @@
 #import "InitialViewController.h"
 #import "FriendsViewController.h"
 #import "SignupViewController.h"
+#import "MenuViewController.h"
 
 @interface InitialViewController ()
 
@@ -50,8 +51,13 @@
     NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     if( [response statusCode] >= 200 && [response statusCode] <=300) {
-        FriendsViewController *friendsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"friendVC"];
-        [self.navigationController pushViewController:friendsVC animated:YES];
+        
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        [ud setObject:self.userName.text forKey:@"UserName"];
+        [ud synchronize];
+        
+        MenuViewController *menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"menuVC"];
+        [self.navigationController pushViewController:menuVC animated:YES];
     } else {
         NSLog(@"Connection could not be made");
     }
