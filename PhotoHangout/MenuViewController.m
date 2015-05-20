@@ -61,10 +61,16 @@
     
     [self uploadImage:image];
     
-    PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
-    photoVC.currentImage = image;
+    // ERASED: initially a photoVC render
+//    PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
+//    photoVC.currentImage = image;
+//    
+//    [self presentViewController:photoVC animated:YES completion:nil];
     
-    [self presentViewController:photoVC animated:YES completion:nil];
+    HostSessionViewController *hostSessionVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"HostSessionVC"];
+    
+    [self presentViewController:hostSessionVC animated:YES completion:nil];
+
 }
 
 

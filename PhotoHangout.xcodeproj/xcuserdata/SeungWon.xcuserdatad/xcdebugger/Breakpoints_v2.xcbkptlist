@@ -183,7 +183,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
+            landmarkName = "-didTabOnAlbum:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -273,13 +273,13 @@
                   symbolName = "-[CLImageToolInfo sortedSubtools]"
                   moduleName = "PhotoHangout"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/SeungWon/Documents/PhotoHangout/PhotoHangout/CLImageEditor/CLImageToolInfo.m"
-                  timestampString = "453437249.319884"
+                  urlString = "file:///Users/seungwon/Desktop/photoHangout/PhotoHangout/CLImageEditor/CLImageToolInfo.m"
+                  timestampString = "453841542.520046"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "80"
                   endingLineNumber = "80"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -288,13 +288,13 @@
                   symbolName = "__33-[CLImageToolInfo sortedSubtools]_block_invoke"
                   moduleName = "PhotoHangout"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/SeungWon/Documents/PhotoHangout/PhotoHangout/CLImageEditor/CLImageToolInfo.m"
-                  timestampString = "453437249.320094"
+                  urlString = "file:///Users/seungwon/Desktop/photoHangout/PhotoHangout/CLImageEditor/CLImageToolInfo.m"
+                  timestampString = "453841542.520689"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "80"
                   endingLineNumber = "80"
-                  offsetFromSymbolStart = "72">
+                  offsetFromSymbolStart = "61">
                </Location>
             </Locations>
          </BreakpointContent>

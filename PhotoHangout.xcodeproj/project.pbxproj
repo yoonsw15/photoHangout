@@ -71,6 +71,7 @@
 		E35AFF071AF6DC3F00F055F7 /* CLTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEFA1AF6DC3F00F055F7 /* CLTextLabel.m */; };
 		E35AFF081AF6DC3F00F055F7 /* CLTextSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEFC1AF6DC3F00F055F7 /* CLTextSettingView.m */; };
 		E35AFF091AF6DC3F00F055F7 /* CLTextTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEFE1AF6DC3F00F055F7 /* CLTextTool.m */; };
+		E3D3AC901B0D025E00BBB48B /* HostSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D3AC8F1B0D025E00BBB48B /* HostSessionViewController.m */; };
 		E3FFE8BC1AEB3ECE00A75504 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FFE8BB1AEB3ECE00A75504 /* FriendsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,8 @@
 /* Begin PBXFileReference section */
 		89686AD71AF7127D00FDFA1D /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		89686AD81AF7127D00FDFA1D /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		C7BEB630540A11E2116BEADB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		CE92D12C1B0DCB7303895B1B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D53ACFBBFF84DF4B46F65DB2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32F46701ADC98FB00C51C8F /* PhotoHangout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoHangout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32F46741ADC98FB00C51C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 		E35AFEFC1AF6DC3F00F055F7 /* CLTextSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTextSettingView.m; sourceTree = "<group>"; };
 		E35AFEFD1AF6DC3F00F055F7 /* CLTextTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTextTool.h; sourceTree = "<group>"; };
 		E35AFEFE1AF6DC3F00F055F7 /* CLTextTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTextTool.m; sourceTree = "<group>"; };
+		E3D3AC8E1B0D025E00BBB48B /* HostSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostSessionViewController.h; sourceTree = "<group>"; };
+		E3D3AC8F1B0D025E00BBB48B /* HostSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostSessionViewController.m; sourceTree = "<group>"; };
 		E3FFE8BA1AEB3ECE00A75504 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		E3FFE8BB1AEB3ECE00A75504 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,6 +241,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C5F61BF257EF48894E9A203F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7BEB630540A11E2116BEADB /* Pods.debug.xcconfig */,
+				CE92D12C1B0DCB7303895B1B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E32F46671ADC98FB00C51C8F = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +260,7 @@
 				E32F468C1ADC98FB00C51C8F /* PhotoHangoutTests */,
 				E32F46711ADC98FB00C51C8F /* Products */,
 				E32F46C01ADCB61600C51C8F /* Frameworks */,
+				C5F61BF257EF48894E9A203F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -268,6 +283,8 @@
 				E32F47F41ADCC9BA00C51C8F /* Main.storyboard */,
 				E32F46991ADC9A4A00C51C8F /* InitialViewController.h */,
 				E32F469A1ADC9A4A00C51C8F /* InitialViewController.m */,
+				E3D3AC8E1B0D025E00BBB48B /* HostSessionViewController.h */,
+				E3D3AC8F1B0D025E00BBB48B /* HostSessionViewController.m */,
 				E32F46A31ADCA25F00C51C8F /* PhotoEditViewController.h */,
 				E32F46A41ADCA25F00C51C8F /* PhotoEditViewController.m */,
 				E33D64911B049B3500DB3A2D /* MenuViewController.h */,
@@ -735,6 +752,7 @@
 				E35AFF061AF6DC3F00F055F7 /* CLPickerView.m in Sources */,
 				E32F47DD1ADCBE1C00C51C8F /* CLDrawTool.m in Sources */,
 				E35AFEFF1AF6DC3F00F055F7 /* CLEmoticonTool.m in Sources */,
+				E3D3AC901B0D025E00BBB48B /* HostSessionViewController.m in Sources */,
 				E32F47AF1ADCBDED00C51C8F /* CLColorPickerView.m in Sources */,
 				E35AFF001AF6DC3F00F055F7 /* CLGPUImageVignetteFilter.m in Sources */,
 				E32F47E61ADCBE3600C51C8F /* CLAdjustmentTool.m in Sources */,
@@ -893,6 +911,7 @@
 		};
 		E32F46941ADC98FB00C51C8F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7BEB630540A11E2116BEADB /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoHangout/Info.plist;
@@ -904,6 +923,7 @@
 		};
 		E32F46951ADC98FB00C51C8F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE92D12C1B0DCB7303895B1B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoHangout/Info.plist;
