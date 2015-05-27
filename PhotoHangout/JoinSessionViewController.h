@@ -24,5 +24,6 @@
 @property (strong, nonatomic) UIImage *receivedImage;
 @property (nonatomic, strong) SRWebSocket *joinWebSocket;
 
-
+@property (nonatomic, strong) NSOperationQueue *operationQueue;
+@property (nonatomic, assign) BOOL shouldPoll;
 @end

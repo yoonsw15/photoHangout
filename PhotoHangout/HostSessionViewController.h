@@ -17,4 +17,6 @@
 @property (nonatomic, strong) SRWebSocket *hostWebSocket;
 @property (nonatomic, strong) UIImage *sessionImage;
 
+@property (nonatomic, strong) NSOperationQueue *operationQueue;
+@property (nonatomic, assign) BOOL shouldPoll;
 @end

@@ -8,6 +8,7 @@
 
 #import "PhotoEditViewController.h"
 #import "CLImageEditor.h"
+#import "MenuViewController.h"
 
 @interface PhotoEditViewController ()<CLImageEditorDelegate, CLImageEditorTransitionDelegate, CLImageEditorThemeDelegate,SRWebSocketDelegate>
 
@@ -145,6 +146,14 @@
     else if ([message isEqual:@"Start"]){
         NSLog(@"What you expected is here. Uh Oh");
     }
+    else if ([message isEqual:@"CloseSession"]) {
+        [self.photoWebSocket close];
+        [self.editor dismissViewControllerAnimated:YES completion:nil];
+        
+        MenuViewController *menuVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"menuVC"];
+        [self presentViewController:menuVC animated:YES completion:nil];
+        //[self dismissViewControllerAnimated:YES completion:nil];
+    }
     else {
         UIImage *product = [self.filterTool filteredImage:self.editor.orig_imageViewWrapper.image withToolInfo:[self createFilterToolInfo:message]];
         self.editor.imageViewWrapper.image = product;
@@ -156,6 +165,100 @@
 {
     [self.editor dismissViewControllerAnimated:YES completion:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imageEditor:(CLImageEditor *)editor didFinishEdittingWithImage:(UIImage *)image
+{
+    if (self.isHost) {
+        [self uploadImage:image];
+        
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        NSString *sessionID = [ud objectForKey:@"SessionId"];
+        [self endSessionWith: sessionID];
+        
+        [self.photoWebSocket send:@"CloseSession"];
+    }
+}
+
+- (void)endSessionWith: (NSString *)sessionId
+{
+    //send the put method here.
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://jingyuliu.com:8080/myapp/sessions/%@/complete", sessionId]]];
+    [request setHTTPMethod:@"PUT"];
+    
+    NSHTTPURLResponse *response = nil;
+    NSError *error = [[NSError alloc] init];
+    
+    NSData *invitationData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    if( [response statusCode] >= 200 && [response statusCode] <=300) {
+        
+    }
+}
+
+- (void)uploadImage:(UIImage *)image
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+    NSString *userName = [ud objectForKey:@"UserName"];
+    NSString *urlPathWithLogin = [NSString stringWithFormat:@"http://162.243.153.67:8080/myapp/photos/%@/upload", userName ];
+    
+    NSURL *url = [NSURL URLWithString:[urlPathWithLogin stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+    
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [request setHTTPShouldHandleCookies:NO];
+    [request setTimeoutInterval:60];
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *boundary = @"unique-consistent-string";
+    
+    // set Content-Type in HTTP header
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    // post body
+    NSMutableData *body = [NSMutableData data];
+    
+    // add params (all params are strings)
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=%@\r\n\r\n", @"imageCaption"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%@\r\n", @"Some Caption"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // add image data
+    if (imageData) {
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=%@; filename=imageName.jpg\r\n", @"data"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:imageData];
+        [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // setting the body of the post to the reqeust
+    [request setHTTPBody:body];
+    
+    // set the content-length
+    NSString *postLength = [NSString stringWithFormat:@"%d", [body length]];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if(data.length > 0)
+        {
+            NSDictionary * photoIDDictionary = [[NSDictionary alloc] init];
+            photoIDDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+            
+            NSNumber *photoID = (NSNumber *)[photoIDDictionary objectForKey:@"photoId"];
+            NSLog(@"Photo ID is %tu", [photoID integerValue]);
+            
+        }
+    }];
 }
 
 /*
