@@ -18,9 +18,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     self.userName = [ud objectForKey:@"UserName"];
     self.userID = [ud objectForKey:@"UserId"];
+    self.library = [ALAssetsLibrary new];
+    /*[self.library addAssetsGroupAlbumWithName:@"Photo_Hangout"
+                                  resultBlock:^(ALAssetsGroup *group) {
+                                      NSLog(@"added album:%s", "@Photo_Hangout");
+                                  }
+                                 failureBlock:^(NSError *error) {
+                                     NSLog(@"error adding album");
+                                 }];*/
+
+    //AVAudioPlayer *player
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"maple" ofType:@"mp3"]];
+    
+    NSError *error;
+    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    self.player.numberOfLoops = -1;
+    
+    if (error)
+    {
+        NSLog(@"Error in audioPlayer: %@", [error description]);
+    } else {
+        [self.player play];
+    }
+
+}
+
+- (void)viewWillDisappear
+{
+    [self.player stop];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,13 +72,23 @@
 }
 
 - (IBAction)didTabOnAlbum:(id)sender {
+    
+    
+    
+   /* [self.library addAssetsGroupAlbumWithName:@"Photo_Hangout"
+                                  resultBlock:nil
+                                 failureBlock:nil];*/
     UIImagePickerController *album = [[UIImagePickerController alloc] init];
+
     album.allowsEditing = YES;
     album.delegate = self;
     album.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
-    
+
     [self presentViewController:album animated:YES completion:nil];
+    
+    [self.player stop];
+
 }
 
 #pragma mark- ImagePicker delegate
