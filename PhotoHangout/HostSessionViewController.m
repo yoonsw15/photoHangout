@@ -7,11 +7,12 @@
 //
 
 #import "HostSessionViewController.h"
+#import "PhotoEditViewController.h"
 
 NSString *const kHostSessionCellIdentifier = @"HostSession";
 NSString *const kHostSessionTableCellNibName = @"HostSessionTableViewCell";
 
-@interface HostSessionViewController ()
+@interface HostSessionViewController () <SRWebSocketDelegate>
 
 @end
 
@@ -21,6 +22,18 @@ NSString *const kHostSessionTableCellNibName = @"HostSessionTableViewCell";
     [super viewDidLoad];
     
     self.acceptedUsersArray = [NSArray array];
+    
+    //open websocket here.
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *sessionID = [ud objectForKey:@"SessionId"];
+    
+    NSURLRequest *websocketURL = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"ws://162.243.153.67:8030/photohangout/websocket/%@",sessionID]]];
+    
+    self.hostWebSocket = [[SRWebSocket alloc] initWithURLRequest:websocketURL];
+    self.hostWebSocket.delegate = self;
+    
+    NSLog(@"Server has now been connected!");
+    [self.hostWebSocket open];
     
     // Run polling on a separate thread
     NSOperationQueue *operationQueue = [NSOperationQueue new];
@@ -117,7 +130,12 @@ NSString *const kHostSessionTableCellNibName = @"HostSessionTableViewCell";
 
 - (IBAction)editingTapped:(id)sender {
     
+    //move to the photoeditor
+    PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
+        photoVC.currentImage = self.sessionImage;
+    [self presentViewController:photoVC animated:YES completion:nil];
     
+    [self.hostWebSocket send:@"Start"];
 }
  
  

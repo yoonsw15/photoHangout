@@ -103,7 +103,6 @@ NSString *const kInviteFriendTableCellNibName = @"InviteFriendsTableViewCell";
         NSString *userName = [self.allUsers[path.row] objectForKey:@"username"];
         NSString *userId = [self.allUsers[path.row] objectForKey:@"userId"];
         
-        
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         NSString *sessionID = [ud objectForKey:@"SessionId"];
         
@@ -114,6 +113,7 @@ NSString *const kInviteFriendTableCellNibName = @"InviteFriendsTableViewCell";
     
     HostSessionViewController *hostSessionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HostSessionVC"];
     hostSessionVC.acceptedFriends = self.selectedUserNames;
+    hostSessionVC.sessionImage = self.sessionImage;
     
     [self presentViewController:hostSessionVC animated:YES completion:nil];
     

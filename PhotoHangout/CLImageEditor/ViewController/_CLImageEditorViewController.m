@@ -215,7 +215,7 @@
         self.imageViewWrapper = _imageView;
         self.drawingView = [[UIImageView alloc] initWithFrame:_imageView.bounds];
         [self.imageViewWrapper addSubview:self.drawingView];
-        self.orig_imageViewWrapper = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Marine"]];
+        self.orig_imageViewWrapper = [[UIImageView alloc] initWithImage:self.imageViewWrapper.image];
     }
 }
 
@@ -598,7 +598,7 @@
 
 - (IBAction)pushedCancelBtn:(id)sender
 {
-    _imageView.image = _originalImage;
+    //_imageView.image = _originalImage;
     [self resetImageViewFrame];
     
     self.currentTool = nil;

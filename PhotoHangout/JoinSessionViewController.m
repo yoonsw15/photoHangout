@@ -9,7 +9,7 @@
 #import "JoinSessionViewController.h"
 NSString *const kJoinCellIdentifier = @"Join";
 NSString *const kJoinTableCellNibName = @"JoinTableViewCell";
-@interface JoinSessionViewController ()
+@interface JoinSessionViewController () <SRWebSocketDelegate>
 
 @end
 
@@ -117,6 +117,7 @@ NSString *const kJoinTableCellNibName = @"JoinTableViewCell";
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kJoinCellIdentifier forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    cell.textLabel.text = [self.currentSessions objectAtIndex:indexPath.row];
     
     NSString *invitationID = [self.invitationIDs objectAtIndex:indexPath.row] ;
     
@@ -142,13 +143,26 @@ NSString *const kJoinTableCellNibName = @"JoinTableViewCell";
         self.receivedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageURL]];
         
         //join websocket here using the data from server.
+        
+        NSString *sessionID = [self.sessionIDs objectAtIndex:indexPath.row];
+        
+        NSURLRequest *websocketURL = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"ws://162.243.153.67:8030/photohangout/websocket/%@",sessionID]]];
+        self.joinWebSocket = [[SRWebSocket alloc] initWithURLRequest:websocketURL];
+        self.joinWebSocket.delegate = self;
+        
+        [self.joinWebSocket open];
         //start loading animation here.
     }
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
-    
+    //if i get start. go to photoeditVC
+    if ([message isEqual:@"Start"]) {
+        PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
+        photoVC.currentImage = self.receivedImage;
+        [self presentViewController:photoVC animated:YES completion:nil];
+    }
 }
 
 - (void)dealloc

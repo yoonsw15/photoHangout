@@ -63,10 +63,6 @@
     
     [self uploadImage:image];
     
-    InviteFriendsViewController *inviteFriendsVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"inviteFriendsVC"];
-    inviteFriendsVC.sessionImage = image;
-    
-    [self presentViewController:inviteFriendsVC animated:YES completion:nil];
     
 //    PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
 //    photoVC.currentImage = image;
@@ -157,12 +153,12 @@
             NSNumber *photoID = (NSNumber *)[photoIDDictionary objectForKey:@"photoId"];
             NSLog(@"Photo ID is %tu", [photoID integerValue]);
             
-            [self createSession:self.userID photoId:photoID];
+            [self createSession:self.userID photoId:photoID withImage:image];
         }
     }];
 }
 
-- (void)createSession:(NSString *)userID photoId:(NSNumber *)photoId
+- (void)createSession:(NSString *)userID photoId:(NSNumber *)photoId withImage:(UIImage *)image
 {
     NSString *post = [NSString stringWithFormat:@"{\"ownerId\":\"%@\",\"photoId\":\"%tu\"}",  userID, [photoId integerValue]];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
@@ -188,6 +184,12 @@
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         [ud setObject: sessionID forKey:@"SessionId"];
         [ud synchronize];
+        
+        InviteFriendsViewController *inviteFriendsVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"inviteFriendsVC"];
+        inviteFriendsVC.sessionImage = image;
+        
+        [self presentViewController:inviteFriendsVC animated:YES completion:nil];
+
         
     } else {
         NSLog(@"Connection could not be made Creating Session Failed");

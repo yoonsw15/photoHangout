@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SRWebsocket.h"
 
 @interface HostSessionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *invitedFriendTable;
 @property (nonatomic, strong) NSMutableArray *acceptedFriends;
 @property (nonatomic, strong) NSArray *acceptedUsersArray;
+@property (nonatomic, strong) SRWebSocket *hostWebSocket;
+@property (nonatomic, strong) UIImage *sessionImage;
+
 @end

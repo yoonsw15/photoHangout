@@ -145,45 +145,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhotoHangout/CLImageEditor/ImageTools/CLDrawTool/CLDrawTool.m"
-            timestampString = "452598558.837301"
+            filePath = "PhotoHangout/HostSessionViewController.m"
+            timestampString = "454395454.836847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
-            landmarkName = "-externalDrawLine:to:WithWidth:withColor:withEditor:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoHangout/CLImageEditor/ImageTools/CLDrawTool/CLDrawTool.m"
-            timestampString = "452598596.012742"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
-            landmarkName = "-externalDrawLine:to:WithWidth:withColor:withEditor:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoHangout/CLImageEditor/ViewController/_CLImageEditorViewController.m"
-            timestampString = "453289985.127694"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "599"
-            endingLineNumber = "599"
-            landmarkName = "-pushedCancelBtn:"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -194,28 +162,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PhotoHangout/HostSessionViewController.m"
-            timestampString = "454390300.615956"
+            timestampString = "454396464.232138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhotoHangout/InviteFriendsViewController.m"
-            timestampString = "454393337.155289"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "-inviteTapped:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
