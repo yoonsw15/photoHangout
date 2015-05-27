@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <AVFoundation/AVFoundation.h>
 @interface InitialViewController : UIViewController <UITextFieldDelegate, UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *userName;
 @property (strong, nonatomic) IBOutlet UITextField *pwName;
+@property (nonatomic, retain) AVAudioPlayer *player;
 
 - (IBAction)loginTapped:(id)sender;
 - (IBAction)signUpTapped: (id)sender;
