@@ -10,6 +10,8 @@
 #import "PhotoEditViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
+#import <AVFoundation/AVFoundation.h>
+
 
 @interface MenuViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIActionSheetDelegate>
 
@@ -18,4 +20,8 @@
 @property (nonatomic,strong) ALAssetsLibrary *library;
 @property (nonatomic,strong) NSString *userName;
 @property (nonatomic,strong) NSString *userID;
+
+@property (nonatomic, retain) AVAudioPlayer *player;
+
 @end
+
