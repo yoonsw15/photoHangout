@@ -8,6 +8,7 @@
 
 #import "MenuViewController.h"
 #import "InviteFriendsViewController.h"
+#import "JoinSessionViewController.h"
 
 @interface MenuViewController () 
 
@@ -191,6 +192,11 @@
     } else {
         NSLog(@"Connection could not be made Creating Session Failed");
     }
+}
+- (IBAction)joinSessionClicked:(id)sender {
+    JoinSessionViewController *joinVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"joinVC"];
+    [self presentViewController:joinVC animated:YES completion:nil];
+    
 }
 
 /*
