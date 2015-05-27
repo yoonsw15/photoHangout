@@ -26,4 +26,6 @@
 @property (nonatomic, strong) CLImageEditor *editor;
 
 @property (nonatomic, strong) UIImage *currentImage;
+
+@property (nonatomic, assign) BOOL isHost;
 @end

@@ -34,11 +34,11 @@ NSString *const kHostSessionTableCellNibName = @"HostSessionTableViewCell";
     
     NSLog(@"Server has now been connected!");
     [self.hostWebSocket open];
-    
+    self.shouldPoll = YES;
     // Run polling on a separate thread
-    NSOperationQueue *operationQueue = [NSOperationQueue new];
+    self.operationQueue = [NSOperationQueue new];
     NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(doPolling) object:nil ];
-    [operationQueue addOperation:operation];
+    [self.operationQueue addOperation:operation];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,9 +46,21 @@ NSString *const kHostSessionTableCellNibName = @"HostSessionTableViewCell";
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    self.shouldPoll = NO;
+    [self.operationQueue cancelAllOperations];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    self.shouldPoll = NO;
+    [self.operationQueue cancelAllOperations];
+}
+
 -(void)doPolling {
     int i = 0;
-    while (true) {
+    while (self.shouldPoll) {
         [self callAPIWithJSON];
         [NSThread sleepForTimeInterval:2];
         NSLog(@"supposed to poll every 2 seconds...");
@@ -133,6 +145,7 @@ NSString *const kHostSessionTableCellNibName = @"HostSessionTableViewCell";
     //move to the photoeditor
     PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
         photoVC.currentImage = self.sessionImage;
+    photoVC.isHost = YES;
     [self presentViewController:photoVC animated:YES completion:nil];
     
     [self.hostWebSocket send:@"Start"];

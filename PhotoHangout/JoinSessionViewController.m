@@ -18,9 +18,10 @@ NSString *const kJoinTableCellNibName = @"JoinTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSOperationQueue *operationQueue = [NSOperationQueue new];
+    self.shouldPoll = YES;
+    self.operationQueue = [NSOperationQueue new];
     NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(doPolling) object:nil ];
-    [operationQueue addOperation:operation];
+    [self.operationQueue addOperation:operation];
     
     self.invitationIDs = [NSMutableArray array];
     self.sessionIDs = [NSMutableArray array];
@@ -35,9 +36,21 @@ NSString *const kJoinTableCellNibName = @"JoinTableViewCell";
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    self.shouldPoll = NO;
+    [self.operationQueue cancelAllOperations];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    self.shouldPoll = NO;
+    [self.operationQueue cancelAllOperations];
+}
+
 -(void)doPolling {
     int i = 0;
-    while (true) {
+    while (self.shouldPoll) {
         [self getCurrentSessions];
         [NSThread sleepForTimeInterval:2];
         NSLog(@"supposed to poll every 2 seconds...");
@@ -161,6 +174,7 @@ NSString *const kJoinTableCellNibName = @"JoinTableViewCell";
     if ([message isEqual:@"Start"]) {
         PhotoEditViewController *photoVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"PhotoEdit"];
         photoVC.currentImage = self.receivedImage;
+        photoVC.isHost = NO;
         [self presentViewController:photoVC animated:YES completion:nil];
     }
 }
