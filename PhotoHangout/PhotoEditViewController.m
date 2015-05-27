@@ -18,13 +18,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.friendURL = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString: @"ws://162.243.153.67:8030/photohangout/websocket/ucla"]];
+    //self.friendURL = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString: @"ws://162.243.153.67:8030/photohangout/websocket/ucla"]];
     
-    self.friendWebSocket = [[SRWebSocket alloc] initWithURLRequest:self.friendURL];
-    self.friendWebSocket.delegate = self;
+    //self.friendWebSocket = [[SRWebSocket alloc] initWithURLRequest:self.friendURL];
+    //self.friendWebSocket.delegate = self;
     
-    NSLog(@"Server has now been connected!");
-    [self.friendWebSocket open];
+    //NSLog(@"Server has now been connected!");
+    //[self.friendWebSocket open];
+    
+    self.photoWebSocket = [SRWebSocket sharedInstance];
+    self.photoWebSocket.delegate = self;
     
     self.filterTool = [[CLFilterTool alloc] init];
     self.drawTool = [[CLDrawTool alloc] init];
@@ -71,7 +74,6 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
-    NSLog(@"Here");
     //Create ToolInfo and use filterTool to use call the method to get the result?
     
     //Create CLImageToolInfo with the message.
@@ -139,6 +141,9 @@
         CGFloat blue = [drawingData[11] floatValue];
         CGFloat alpha = [drawingData[12] floatValue];
         [self.drawTool externalDrawLine:CGPointMake(fromX, fromY) to:CGPointMake(toX, toY) WithWidth:width withColor:[UIColor colorWithRed:red green:green blue:blue alpha:alpha] withEditor:self.editor];
+    }
+    else if ([message isEqual:@"Start"]){
+        NSLog(@"What you expected is here. Uh Oh");
     }
     else {
         UIImage *product = [self.filterTool filteredImage:self.editor.orig_imageViewWrapper.image withToolInfo:[self createFilterToolInfo:message]];

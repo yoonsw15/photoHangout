@@ -21,7 +21,7 @@
 @property (strong, nonatomic) CLStickerTool *stickerTool;
 @property (strong, nonatomic) CLEmoticonTool *emoticonTool;
 
-@property (nonatomic, strong) SRWebSocket *friendWebSocket;
+@property (nonatomic, strong) SRWebSocket *photoWebSocket;
 @property (nonatomic, strong) NSURLRequest *friendURL;
 @property (nonatomic, strong) CLImageEditor *editor;
 

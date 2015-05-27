@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SRWebsocket.h"
+#import "PhotoEditViewController.h"
+
 @interface JoinSessionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *joinSessionTableView;
@@ -20,4 +22,7 @@
 @property (strong, nonatomic) NSMutableArray *hostIDs;
 
 @property (strong, nonatomic) UIImage *receivedImage;
+@property (nonatomic, strong) SRWebSocket *joinWebSocket;
+
+
 @end
