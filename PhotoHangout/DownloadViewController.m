@@ -38,30 +38,94 @@ static NSString * const PhotoCellIdentifier = @"PhotoCell";
     self.albums = [NSMutableArray array];
     
     
-    NSURL *urlPrefix = [NSURL URLWithString:@"http://raw.github.com/ShadoFlameX/PhotoCollectionView/master/Photos/"];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *UserName= [ud objectForKey:@"UserName"];
+    NSArray * allListArray = [[NSArray alloc] init];
+    //NSDictionary *objectsDict;
+    NSArray *store;
+    
+
+    NSURL *urlPhotoList = [NSURL URLWithString:[NSString stringWithFormat:@"http://jingyuliu.com:8080/myapp/photos/%@/all", UserName]];
+    NSURL *urlPrefix =[NSURL URLWithString:[NSString stringWithFormat:@"http://jingyuliu.com:8080/myapp/photos/%@/", UserName]];
+    //NSURL *urlPrefix = [NSURL URLWithString:@"http://raw.github.com/ShadoFlameX/PhotoCollectionView/master/Photos/"];
+    
+    NSData * allUsersJSON =[NSData dataWithContentsOfURL:urlPhotoList];
+    
+    if(allUsersJSON != nil) {
+        NSError *error = nil;
+        allListArray = [NSJSONSerialization JSONObjectWithData:allUsersJSON options:NSJSONReadingMutableContainers error:&error];
+
+        //self.allLists = [NSMutableArray arrayWithArray:allListArray];
+        NSInteger temp = allListArray.count;
+        
+        store = [allListArray valueForKeyPath:@"photoId"];
+
+        /*
+        for(NSInteger i = 0 ; i < temp; i++) {
+            NSLog(@"Photo ID: %@", store[i]) ;
+            //store = [[self.allLists[i] valueForKeyPath:@"photoid"] integerValue];
+        }
+        if (error == nil) {
+        }*/
+        
+    }
     
     NSInteger photoIndex = 0;
-    
-    for (NSInteger a = 0; a < 12; a++) {
+
+    if(store.count ==0) {
         BHAlbum *album = [[BHAlbum alloc] init];
-        //album.name = [NSString stringWithFormat:@"Photo Album %d", a+1];
-        
-        NSUInteger photoCount = arc4random()%4 +2;
-        for (NSInteger p = 0; p < photoCount; p++) {
-            // there are up to 25 photos available to load from the code repository
-            NSString *photoFilename = [NSString stringWithFormat:@"thumbnail%d.jpg",photoIndex % 25];
-            NSURL *photoURL = [urlPrefix URLByAppendingPathComponent:photoFilename];
-            BHPhoto *photo = [BHPhoto photoWithImageURL:photoURL];
-            [album addPhoto:photo];
-            
-            photoIndex++;
-        }
-        
+        NSURL *blankPhoto = [NSURL URLWithString:[NSString stringWithFormat:@"https://d1luk0418egahw.cloudfront.net/static/images/guide/NoImage_592x444.jpg"]];
+        BHPhoto *photo = [BHPhoto photoWithImageURL:blankPhoto];
+        [album addPhoto:photo];
         [self.albums addObject:album];
-        
-        self.thumbnailQueue = [[NSOperationQueue alloc] init];
-        self.thumbnailQueue.maxConcurrentOperationCount = 3;
     }
+    else {
+        for (NSInteger a = 0; a < 12; a++) {
+            BHAlbum *album = [[BHAlbum alloc] init];
+            //album.name = [NSString stringWithFormat:@"Photo Album %d", a+1];
+
+            NSUInteger photoCount = arc4random()%4 +2;
+            for (NSInteger p = 0; p <photoCount; p++) {
+                // there are up to 25 photos available to load from the code repository
+                NSString *photoFilename = [NSString stringWithFormat:@"%@",store[photoIndex % store.count]];
+                NSURL *photoURL = [urlPrefix URLByAppendingPathComponent:photoFilename];
+                BHPhoto *photo = [BHPhoto photoWithImageURL:photoURL];
+                [album addPhoto:photo];
+            
+                //standard++;
+                photoIndex++;
+            }
+        
+            [self.albums addObject:album];
+        
+            self.thumbnailQueue = [[NSOperationQueue alloc] init];
+            self.thumbnailQueue.maxConcurrentOperationCount = 3;
+        }
+    }
+    /*
+     
+     for (NSInteger a = 0; a < 12; a++) {
+     BHAlbum *album = [[BHAlbum alloc] init];
+     //album.name = [NSString stringWithFormat:@"Photo Album %d", a+1];
+     
+     NSUInteger photoCount = arc4random()%4 +2;
+     for (NSInteger p = 0; p < photoCount; p++) {
+     // there are up to 25 photos available to load from the code repository
+     NSString *photoFilename = [NSString stringWithFormat:@"thumbnail%d.jpg",photoIndex % 25];
+     NSURL *photoURL = [urlPrefix URLByAppendingPathComponent:photoFilename];
+     BHPhoto *photo = [BHPhoto photoWithImageURL:photoURL];
+     [album addPhoto:photo];
+     
+     photoIndex++;
+     }
+     
+     [self.albums addObject:album];
+     
+     self.thumbnailQueue = [[NSOperationQueue alloc] init];
+     self.thumbnailQueue.maxConcurrentOperationCount = 3;
+     }
+
+     */
 
 
 }

@@ -13,6 +13,7 @@
     NSMutableArray *collectionImages;
 }
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionview;
+@property (nonatomic, strong) NSMutableArray *allLists;
 
 
 

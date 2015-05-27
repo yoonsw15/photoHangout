@@ -21,6 +21,7 @@
 		89686AD91AF7127D00FDFA1D /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89686AD81AF7127D00FDFA1D /* SignupViewController.m */; };
 		896FBBF61B07108600E776F6 /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 896FBBF51B07108600E776F6 /* DownloadViewController.m */; };
 		899E06E41B1555CC00B027FB /* camera icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 899E06E31B1555CC00B027FB /* camera icon.png */; };
+		899E06E61B15922800B027FB /*  no_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 899E06E51B15922800B027FB /*  no_image.jpg */; };
 		E32F46761ADC98FB00C51C8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F46751ADC98FB00C51C8F /* main.m */; };
 		E32F46791ADC98FB00C51C8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E32F46781ADC98FB00C51C8F /* AppDelegate.m */; };
 		E32F46811ADC98FB00C51C8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32F46801ADC98FB00C51C8F /* Images.xcassets */; };
@@ -121,6 +122,7 @@
 		896FBBF41B07106E00E776F6 /* DownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadViewController.h; sourceTree = "<group>"; };
 		896FBBF51B07108600E776F6 /* DownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadViewController.m; sourceTree = "<group>"; };
 		899E06E31B1555CC00B027FB /* camera icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera icon.png"; path = "../../3-assets/camera icon.png"; sourceTree = "<group>"; };
+		899E06E51B15922800B027FB /*  no_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = " no_image.jpg"; sourceTree = "<group>"; };
 		E32F46701ADC98FB00C51C8F /* PhotoHangout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoHangout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E32F46741ADC98FB00C51C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32F46751ADC98FB00C51C8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				E33DA57F1B0D14EC009C7A52 /* HostSessionViewController.m */,
 				E32F46801ADC98FB00C51C8F /* Images.xcassets */,
 				899E06E31B1555CC00B027FB /* camera icon.png */,
+				899E06E51B15922800B027FB /*  no_image.jpg */,
 				8965926F1B0D1CA300559180 /* emblem.png */,
 				896592701B0D1CA300559180 /* emblem@2x.png */,
 				E32F46821ADC98FB00C51C8F /* LaunchScreen.xib */,
@@ -762,6 +765,7 @@
 				E32F47871ADCBDBF00C51C8F /* CLImageEditor.bundle in Resources */,
 				896592721B0D1CA300559180 /* emblem@2x.png in Resources */,
 				899E06E41B1555CC00B027FB /* camera icon.png in Resources */,
+				899E06E61B15922800B027FB /*  no_image.jpg in Resources */,
 				896592711B0D1CA300559180 /* emblem.png in Resources */,
 				E32F46811ADC98FB00C51C8F /* Images.xcassets in Resources */,
 				E32F47F51ADCC9BA00C51C8F /* Main.storyboard in Resources */,
