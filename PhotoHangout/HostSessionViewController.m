@@ -98,10 +98,7 @@ NSString *const kHostSessionTableCellNibName = @"HostSessionTableViewCell";
  
      UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kHostSessionCellIdentifier forIndexPath:indexPath];
      cell.textLabel.text = [self.acceptedFriends objectAtIndex:indexPath.row];
-     
-     //check if the acceped users contain username in our acceptedFriends. 
-     NSLog(@"Reloaded");
-     
+          
      if ([self.acceptedUsersArray count] != nil) {
          int row = indexPath.row;
          if ([[self.acceptedUsersArray[row] objectForKey:@"accepted"] isEqualToString:@"1"]) {

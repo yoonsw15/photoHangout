@@ -7,7 +7,7 @@
 //
 
 #import "InitialViewController.h"
-#import "FriendsViewController.h"
+#import "JoinSessionViewController.h"
 #import "SignupViewController.h"
 #import "MenuViewController.h"
 

@@ -72,7 +72,7 @@
 		E35AFF071AF6DC3F00F055F7 /* CLTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEFA1AF6DC3F00F055F7 /* CLTextLabel.m */; };
 		E35AFF081AF6DC3F00F055F7 /* CLTextSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEFC1AF6DC3F00F055F7 /* CLTextSettingView.m */; };
 		E35AFF091AF6DC3F00F055F7 /* CLTextTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E35AFEFE1AF6DC3F00F055F7 /* CLTextTool.m */; };
-		E3FFE8BC1AEB3ECE00A75504 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FFE8BB1AEB3ECE00A75504 /* FriendsViewController.m */; };
+		E3FFE8BC1AEB3ECE00A75504 /* JoinSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FFE8BB1AEB3ECE00A75504 /* JoinSessionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,8 +210,8 @@
 		E35AFEFC1AF6DC3F00F055F7 /* CLTextSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTextSettingView.m; sourceTree = "<group>"; };
 		E35AFEFD1AF6DC3F00F055F7 /* CLTextTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTextTool.h; sourceTree = "<group>"; };
 		E35AFEFE1AF6DC3F00F055F7 /* CLTextTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTextTool.m; sourceTree = "<group>"; };
-		E3FFE8BA1AEB3ECE00A75504 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
-		E3FFE8BB1AEB3ECE00A75504 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		E3FFE8BA1AEB3ECE00A75504 /* JoinSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinSessionViewController.h; sourceTree = "<group>"; };
+		E3FFE8BB1AEB3ECE00A75504 /* JoinSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinSessionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +239,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E30339541B15723200C5AFE4 /* Join/Host */ = {
+			isa = PBXGroup;
+			children = (
+				E33DA57E1B0D14EC009C7A52 /* HostSessionViewController.h */,
+				E33DA57F1B0D14EC009C7A52 /* HostSessionViewController.m */,
+				E3FFE8BA1AEB3ECE00A75504 /* JoinSessionViewController.h */,
+				E3FFE8BB1AEB3ECE00A75504 /* JoinSessionViewController.m */,
+				E33DA57B1B0D055F009C7A52 /* InviteFriendsViewController.h */,
+				E33DA57C1B0D055F009C7A52 /* InviteFriendsViewController.m */,
+			);
+			name = Join/Host;
+			sourceTree = "<group>";
+		};
+		E30339551B15726100C5AFE4 /* Login/SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				E32F46991ADC9A4A00C51C8F /* InitialViewController.h */,
+				E32F469A1ADC9A4A00C51C8F /* InitialViewController.m */,
+				89686AD71AF7127D00FDFA1D /* SignupViewController.h */,
+				89686AD81AF7127D00FDFA1D /* SignupViewController.m */,
+			);
+			name = Login/SignUp;
+			sourceTree = "<group>";
+		};
 		E32F46671ADC98FB00C51C8F = {
 			isa = PBXGroup;
 			children = (
@@ -264,23 +288,15 @@
 		E32F46721ADC98FB00C51C8F /* PhotoHangout */ = {
 			isa = PBXGroup;
 			children = (
+				E30339551B15726100C5AFE4 /* Login/SignUp */,
+				E30339541B15723200C5AFE4 /* Join/Host */,
 				E32F46771ADC98FB00C51C8F /* AppDelegate.h */,
 				E32F46781ADC98FB00C51C8F /* AppDelegate.m */,
-				E3FFE8BA1AEB3ECE00A75504 /* FriendsViewController.h */,
-				E3FFE8BB1AEB3ECE00A75504 /* FriendsViewController.m */,
 				E32F47F41ADCC9BA00C51C8F /* Main.storyboard */,
-				E32F46991ADC9A4A00C51C8F /* InitialViewController.h */,
-				E32F469A1ADC9A4A00C51C8F /* InitialViewController.m */,
-				E33DA57B1B0D055F009C7A52 /* InviteFriendsViewController.h */,
-				E33DA57C1B0D055F009C7A52 /* InviteFriendsViewController.m */,
 				E32F46A31ADCA25F00C51C8F /* PhotoEditViewController.h */,
 				E32F46A41ADCA25F00C51C8F /* PhotoEditViewController.m */,
 				E33D64911B049B3500DB3A2D /* MenuViewController.h */,
 				E33D64921B049B3500DB3A2D /* MenuViewController.m */,
-				89686AD71AF7127D00FDFA1D /* SignupViewController.h */,
-				89686AD81AF7127D00FDFA1D /* SignupViewController.m */,
-				E33DA57E1B0D14EC009C7A52 /* HostSessionViewController.h */,
-				E33DA57F1B0D14EC009C7A52 /* HostSessionViewController.m */,
 				E32F46801ADC98FB00C51C8F /* Images.xcassets */,
 				E32F46821ADC98FB00C51C8F /* LaunchScreen.xib */,
 				E32F46731ADC98FB00C51C8F /* Supporting Files */,
@@ -725,7 +741,7 @@
 				E35AFF041AF6DC3F00F055F7 /* CLFontPickerView.m in Sources */,
 				E32F47AE1ADCBDED00C51C8F /* CLCircleView.m in Sources */,
 				E32F47981ADCBDD100C51C8F /* CLClassList.m in Sources */,
-				E3FFE8BC1AEB3ECE00A75504 /* FriendsViewController.m in Sources */,
+				E3FFE8BC1AEB3ECE00A75504 /* JoinSessionViewController.m in Sources */,
 				E32F479F1ADCBDDF00C51C8F /* CLImageToolBase.m in Sources */,
 				E32F47D61ADCBE1400C51C8F /* CLHighlightShadowEffect.m in Sources */,
 				E32F469B1ADC9A4A00C51C8F /* InitialViewController.m in Sources */,

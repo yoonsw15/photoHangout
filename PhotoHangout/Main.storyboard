@@ -133,7 +133,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="QPK-1M-Nmx" kind="presentation" id="0xy-TG-WLD"/>
+                                    <action selector="joinSessionClicked:" destination="JGH-tj-aAT" eventType="touchUpInside" id="g5k-os-ZtY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tB-oJ-rpO" userLabel="Choose from Album">
@@ -166,10 +166,10 @@
             </objects>
             <point key="canvasLocation" x="667" y="793"/>
         </scene>
-        <!--Friends View Controller-->
+        <!--Join Session View Controller-->
         <scene sceneID="Lkp-h2-Grf">
             <objects>
-                <viewController storyboardIdentifier="friendVC" id="QPK-1M-Nmx" customClass="FriendsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="joinVC" id="QPK-1M-Nmx" customClass="JoinSessionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5be-qj-hLJ"/>
                         <viewControllerLayoutGuide type="bottom" id="dtN-bN-Eka"/>
@@ -185,7 +185,7 @@
                                     <constraint firstAttribute="height" constant="418" id="ZML-LV-al3"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Friend" id="hZN-KP-TlB">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Join" id="hZN-KP-TlB">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hZN-KP-TlB" id="PBf-hS-FUp">
@@ -222,12 +222,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="ziW-YO-fkg" id="pco-4O-A8f"/>
+                        <outlet property="joinSessionTableView" destination="ziW-YO-fkg" id="141-VZ-LfZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SlX-4I-R3j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1789" y="160"/>
+            <point key="canvasLocation" x="1683" y="137"/>
         </scene>
         <!--Invite Friends View Controller-->
         <scene sceneID="E9I-ep-ZfX">
