@@ -9,6 +9,7 @@
 #import "MenuViewController.h"
 #import "InviteFriendsViewController.h"
 #import "JoinSessionViewController.h"
+#import "DownloadViewController.h"
 
 @interface MenuViewController () 
 
@@ -199,6 +200,10 @@
     JoinSessionViewController *joinVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"joinVC"];
     [self presentViewController:joinVC animated:YES completion:nil];
     
+}
+- (IBAction)downloadFromServerClicked:(id)sender {
+    DownloadViewController *downVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"downloadVC"];
+    [self.navigationController pushViewController:downVC animated:YES];
 }
 
 /*

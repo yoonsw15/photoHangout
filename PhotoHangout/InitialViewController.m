@@ -20,6 +20,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //AVAudioPlayer *player
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"maple" ofType:@"mp3"]];
+    
+    NSError *error;
+    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    self.player.numberOfLoops = -1;
+    
+    if (error)
+    {
+        NSLog(@"Error in audioPlayer: %@", [error description]);
+    } else {
+        [self.player play];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.player stop];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,6 +78,7 @@
         
         MenuViewController *menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"menuVC"];
         [self.navigationController pushViewController:menuVC animated:YES];
+        [self.player stop];
     } else {
         NSLog(@"Connection could not be made Login failed");
     }
