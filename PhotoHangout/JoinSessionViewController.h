@@ -19,4 +19,5 @@
 @property (strong, nonatomic) NSMutableArray *sessionIDs;
 @property (strong, nonatomic) NSMutableArray *hostIDs;
 
+@property (strong, nonatomic) UIImage *receivedImage;
 @end

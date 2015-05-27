@@ -198,27 +198,13 @@
                                     <outlet property="delegate" destination="QPK-1M-Nmx" id="xBJ-hS-wln"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unK-iP-3O2">
-                                <rect key="frame" x="259" y="468" width="85" height="30"/>
-                                <state key="normal" title="Start Editing">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="159" y="468" width="85" height="30"/>
-                                </variation>
-                                <connections>
-                                    <segue destination="mKL-eK-TXm" kind="show" id="TIq-jB-Iy2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="ziW-YO-fkg" secondAttribute="centerX" id="Ty5-u6-Kkf"/>
                             <constraint firstItem="ziW-YO-fkg" firstAttribute="leading" secondItem="AKg-jh-C7V" secondAttribute="leadingMargin" constant="-16" id="eOH-gn-StB"/>
-                            <constraint firstItem="unK-iP-3O2" firstAttribute="top" secondItem="ziW-YO-fkg" secondAttribute="bottom" constant="30" id="fqc-nJ-v4z"/>
                             <constraint firstItem="ziW-YO-fkg" firstAttribute="top" secondItem="5be-qj-hLJ" secondAttribute="bottom" id="mA4-mc-Yud"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ziW-YO-fkg" secondAttribute="trailing" constant="-16" id="n0e-Sq-YyI"/>
-                            <constraint firstAttribute="centerX" secondItem="unK-iP-3O2" secondAttribute="centerX" constant="-0.5" id="zwV-UJ-STf"/>
                         </constraints>
                     </view>
                     <connections>
@@ -507,8 +493,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="emailTextField" destination="66d-dJ-Kqd" id="lCC-zf-OTr"/>
-                        <outlet property="pwTextField" destination="0It-GY-pHm" id="fE9-lY-1In"/>
+                        <outlet property="emailTextField" destination="0It-GY-pHm" id="vpb-jd-5C0"/>
+                        <outlet property="pwTextField" destination="66d-dJ-Kqd" id="kEv-BI-jLj"/>
                         <outlet property="userNameTextField" destination="KiA-Aa-DcK" id="6nM-ch-ZbW"/>
                     </connections>
                 </viewController>

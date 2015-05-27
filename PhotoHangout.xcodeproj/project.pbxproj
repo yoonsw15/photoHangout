@@ -244,10 +244,10 @@
 			children = (
 				E33DA57E1B0D14EC009C7A52 /* HostSessionViewController.h */,
 				E33DA57F1B0D14EC009C7A52 /* HostSessionViewController.m */,
-				E3FFE8BA1AEB3ECE00A75504 /* JoinSessionViewController.h */,
-				E3FFE8BB1AEB3ECE00A75504 /* JoinSessionViewController.m */,
 				E33DA57B1B0D055F009C7A52 /* InviteFriendsViewController.h */,
 				E33DA57C1B0D055F009C7A52 /* InviteFriendsViewController.m */,
+				E3FFE8BA1AEB3ECE00A75504 /* JoinSessionViewController.h */,
+				E3FFE8BB1AEB3ECE00A75504 /* JoinSessionViewController.m */,
 			);
 			name = Join/Host;
 			sourceTree = "<group>";

@@ -47,8 +47,9 @@ NSString *const kJoinTableCellNibName = @"JoinTableViewCell";
 
 - (void)getCurrentSessions
 {
-    NSArray * currentSessions = [[NSArray alloc] init];
-
+    NSArray * currentSessionsResponse = [[NSArray alloc] init];
+    NSMutableArray *hostNames = [[NSMutableArray alloc] init];
+    
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSString *userName = [ud objectForKey:@"UserName"];
     
@@ -56,17 +57,19 @@ NSString *const kJoinTableCellNibName = @"JoinTableViewCell";
     NSData *currentSessionData =[NSData dataWithContentsOfURL:currentSessionURL];
     if(currentSessionData != nil) {
         NSError *error = nil;
-        currentSessions = [NSJSONSerialization JSONObjectWithData:currentSessionData options:NSJSONReadingMutableContainers error:&error];
+        currentSessionsResponse = [NSJSONSerialization JSONObjectWithData:currentSessionData options:NSJSONReadingMutableContainers error:&error];
         
-        for (int index = 0 ; index < [currentSessions count] ; index++) {
-            NSDictionary *invitation = [currentSessions objectAtIndex:index];
+        for (int index = 0 ; index < [currentSessionsResponse count] ; index++) {
+            NSDictionary *invitation = [currentSessionsResponse objectAtIndex:index];
             [self.sessionIDs insertObject:[invitation objectForKey:@"sessionId"] atIndex:index];
             [self.photoIDs insertObject:[invitation objectForKey:@"photoId"] atIndex:index];
             [self.invitationIDs insertObject:[invitation objectForKey:@"invitationId"] atIndex:index];
             [self.hostIDs insertObject:[invitation objectForKey:@"hostId"] atIndex:index];
             
-            [self.currentSessions insertObject:[invitation objectForKey:@"hostUserName"] atIndex:index];
+            [hostNames insertObject:[invitation objectForKey:@"hostName"] atIndex:index];
         }
+        
+        self.currentSessions = hostNames;
         
         dispatch_sync(dispatch_get_main_queue(), ^{
             // Update data source array and reload table view.
@@ -130,6 +133,13 @@ NSString *const kJoinTableCellNibName = @"JoinTableViewCell";
     
     if( [response statusCode] >= 200 && [response statusCode] <=300) {
         invitationDict = [NSJSONSerialization JSONObjectWithData:invitationData options:NSJSONReadingMutableContainers error:&error];
+        
+        NSString *photoId = [invitationDict objectForKey:@"photoId"];
+        NSString *hostUserName = [invitationDict objectForKey:@"hostName"];
+        
+        NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat: @"http://jingyuliu.com:8080/myapp/photos/%@/%@", hostUserName,photoId]];
+        
+        self.receivedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageURL]];
         
         //join websocket here using the data from server.
         //start loading animation here.
