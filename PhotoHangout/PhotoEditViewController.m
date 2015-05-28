@@ -164,7 +164,9 @@
 - (void)imageEditorDidCancel:(CLImageEditor*)editor
 {
     [self.editor dismissViewControllerAnimated:YES completion:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    MenuViewController *menuVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"menuVC"];
+    [self presentViewController:menuVC animated:YES completion:nil];
 }
 
 - (void)imageEditor:(CLImageEditor *)editor didFinishEdittingWithImage:(UIImage *)image

@@ -12,6 +12,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *userName;
 @property (strong, nonatomic) IBOutlet UITextField *pwName;
 @property (nonatomic, retain) AVAudioPlayer *player;
+@property (strong, nonatomic) IBOutlet UILabel *logo;
 
 - (IBAction)loginTapped:(id)sender;
 - (IBAction)signUpTapped: (id)sender;
