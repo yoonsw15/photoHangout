@@ -29,6 +29,19 @@ NSString *const kJoinTableCellNibName = @"JoinTableViewCell";
     self.hostIDs = [NSMutableArray array];
     
     self.currentSessions = [NSMutableArray array];
+    
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.spinner.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
+    [self.view addSubview:self.spinner];
+    [self.view bringSubviewToFront:self.spinner];
+    [self.spinner startAnimating];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +53,7 @@ NSString *const kJoinTableCellNibName = @"JoinTableViewCell";
 {
     self.shouldPoll = NO;
     [self.operationQueue cancelAllOperations];
+    [self.spinner stopAnimating];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -122,7 +136,8 @@ NSString *const kJoinTableCellNibName = @"JoinTableViewCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kJoinCellIdentifier forIndexPath:indexPath];
     cell.textLabel.text = [self.currentSessions objectAtIndex:indexPath.row];
-    
+    cell.textLabel.font = [UIFont fontWithName:@"Menlo" size:15];
+    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 

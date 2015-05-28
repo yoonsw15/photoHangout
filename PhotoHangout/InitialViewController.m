@@ -33,6 +33,14 @@
     } else {
         [self.player play];
     }
+    
+    [self.logo setTransform:CGAffineTransformMakeRotation(-M_PI/5.25)];
+    [self.view bringSubviewToFront:self.logo];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -114,6 +122,26 @@
         if (error == nil) {
         }
     }
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.35f];
+    CGRect viewBounds = self.view.bounds;
+    viewBounds.origin.y = self.view.bounds.origin.y + 100;
+    self.view.bounds = viewBounds;
+    [UIView commitAnimations];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.35f];
+    CGRect viewBounds = self.view.bounds;
+    viewBounds.origin.y = self.view.bounds.origin.y - 100;
+    self.view.bounds = viewBounds;
+    [UIView commitAnimations];
 }
 
 /*

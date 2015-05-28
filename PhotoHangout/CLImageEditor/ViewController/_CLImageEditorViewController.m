@@ -227,6 +227,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    _navigationBar.barTintColor = [UIColor blackColor];
+    _navigationBar.tintColor = [UIColor whiteColor];
     if(self.targetImageView){
         [self expropriateImageView];
     }

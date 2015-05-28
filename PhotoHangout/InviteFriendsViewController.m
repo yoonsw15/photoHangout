@@ -65,6 +65,8 @@ NSString *const kInviteFriendTableCellNibName = @"InviteFriendsTableViewCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kInviteFriendsCellIdentifier forIndexPath:indexPath];
     cell.textLabel.text = [self.allUsers[indexPath.row] objectForKey:@"username"];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.font = [UIFont fontWithName:@"Menlo" size:15];
     
     if ([self.selectedUsers containsObject:indexPath])
     {

@@ -26,4 +26,6 @@
 
 @property (nonatomic, strong) NSOperationQueue *operationQueue;
 @property (nonatomic, assign) BOOL shouldPoll;
+
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @end

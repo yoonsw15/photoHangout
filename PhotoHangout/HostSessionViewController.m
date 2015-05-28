@@ -123,7 +123,9 @@ NSString *const kHostSessionTableCellNibName = @"HostSessionTableViewCell";
  
      UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kHostSessionCellIdentifier forIndexPath:indexPath];
      cell.textLabel.text = [self.acceptedFriends objectAtIndex:indexPath.row];
-          
+     cell.textLabel.textColor = [UIColor whiteColor];
+     cell.textLabel.font = [UIFont fontWithName:@"Menlo" size:15];
+     
      if ([self.acceptedUsersArray count] != nil) {
          int row = indexPath.row;
          if ([[self.acceptedUsersArray[row] objectForKey:@"accepted"] isEqualToString:@"1"]) {

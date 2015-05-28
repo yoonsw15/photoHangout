@@ -23,11 +23,45 @@
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     self.userName = [ud objectForKey:@"UserName"];
     self.userID = [ud objectForKey:@"UserId"];
+    
+    self.albumHeight.constant = self.view.frame.size.height/4.5;
+    self.cameraRollHeight.constant = self.view.frame.size.height/4.5;
+    self.joinHeight.constant = self.view.frame.size.height/4.5;
+    self.takePhotoHeight.constant = self.view.frame.size.height/4.5;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [[self.takePhotoBtn layer] setBorderWidth:2.0f];
+    [[self.takePhotoBtn layer] setBorderColor:[UIColor whiteColor].CGColor];
+    [self.takePhotoBtn layer].cornerRadius = 20.0;
+    [self.takePhotoBtn layer].masksToBounds = YES;
+    
+    [[self.albumBtn layer] setBorderWidth:2.0f];
+    [[self.albumBtn layer] setBorderColor:[UIColor whiteColor].CGColor];
+    [self.albumBtn layer].cornerRadius = 20.0;
+    [self.albumBtn layer].masksToBounds = YES;
+    
+    [[self.joinBtn layer] setBorderWidth:2.0f];
+    [[self.joinBtn layer] setBorderColor:[UIColor whiteColor].CGColor];
+    [self.joinBtn layer].cornerRadius = 20.0;
+    [self.joinBtn layer].masksToBounds = YES;
+    
+    [[self.cameraRollBtn layer] setBorderWidth:2.0f];
+    [[self.cameraRollBtn layer] setBorderColor:[UIColor whiteColor].CGColor];
+    [self.cameraRollBtn layer].cornerRadius = 20.0;
+    [self.cameraRollBtn layer].masksToBounds = YES;
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+
+    
+    
 }
 
 - (NSUInteger)supportedInterfaceOrientations
@@ -198,8 +232,7 @@
 }
 - (IBAction)joinSessionClicked:(id)sender {
     JoinSessionViewController *joinVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"joinVC"];
-    [self presentViewController:joinVC animated:YES completion:nil];
-    
+    [self.navigationController pushViewController:joinVC animated:YES];
 }
 - (IBAction)downloadFromServerClicked:(id)sender {
     DownloadViewController *downVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"downloadVC"];

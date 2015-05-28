@@ -31,7 +31,7 @@ static NSString * const PhotoCellIdentifier = @"PhotoCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.collectionview.backgroundColor = [UIColor colorWithWhite:0.25f alpha:1.0f];
+    self.collectionview.backgroundColor = [UIColor blackColor];
     
     [self.collectionview registerClass:[BHAlbumPhotoCell class] forCellWithReuseIdentifier: PhotoCellIdentifier];
     
@@ -128,6 +128,13 @@ static NSString * const PhotoCellIdentifier = @"PhotoCell";
      */
 
 
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning
