@@ -173,11 +173,6 @@
 {
     if (self.isHost) {
         [self uploadImage:self.editor.imageViewWrapper.image];
-        
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        NSString *sessionID = [ud objectForKey:@"SessionId"];
-        [self endSessionWith: sessionID];
-        
         [self.photoWebSocket send:@"CloseSession"];
     }
 }
@@ -197,6 +192,33 @@
     if( [response statusCode] >= 200 && [response statusCode] <=300) {
         
     }
+}
+
+- (void)updateSession: (NSString *)sessionId photoId:(NSString *)finalPhotoId
+{
+    NSString *post = [NSString stringWithFormat:@"{\"sessionId\":\"%@\",\"photoId\":\"%@\"}", sessionId,finalPhotoId];
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://jingyuliu.com:8080/myapp/sessions/%@", sessionId]]]; // change URL here
+    [request setHTTPMethod:@"PUT"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSError *error = [[NSError alloc] init];
+    
+    NSHTTPURLResponse *response = nil;
+    
+    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    if( [response statusCode] >= 200 && [response statusCode] <=300) {
+        [self endSessionWith: sessionId];
+    } else {
+        NSLog(@"Updating Session Failed");
+    }
+
+
 }
 
 - (void)uploadImage:(UIImage *)image
@@ -256,9 +278,12 @@
             NSDictionary * photoIDDictionary = [[NSDictionary alloc] init];
             photoIDDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
             
-            NSNumber *photoID = (NSNumber *)[photoIDDictionary objectForKey:@"photoId"];
+            NSString *photoID = [photoIDDictionary objectForKey:@"photoId"];
             NSLog(@"Photo ID is %tu", [photoID integerValue]);
+            NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+            NSString *sessionID = [ud objectForKey:@"SessionId"];
             
+            [self updateSession: sessionID photoId:photoID];
         }
     }];
 }

@@ -46,7 +46,7 @@ static NSString * const PhotoCellIdentifier = @"PhotoCell";
     
 
     NSURL *urlPhotoList = [NSURL URLWithString:[NSString stringWithFormat:@"http://jingyuliu.com:8080/myapp/photos/%@/all", UserName]];
-    NSURL *urlPrefix =[NSURL URLWithString:[NSString stringWithFormat:@"http://jingyuliu.com:8080/myapp/photos/%@/", UserName]];
+    NSURL *urlPrefix =[NSURL URLWithString:[NSString stringWithFormat:@"http://jingyuliu.com:8080/myapp/photos/"]];
     //NSURL *urlPrefix = [NSURL URLWithString:@"http://raw.github.com/ShadoFlameX/PhotoCollectionView/master/Photos/"];
     
     NSData * allUsersJSON =[NSData dataWithContentsOfURL:urlPhotoList];
