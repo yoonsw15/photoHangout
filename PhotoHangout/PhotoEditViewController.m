@@ -150,7 +150,7 @@
         [self.photoWebSocket close];
         [self.editor dismissViewControllerAnimated:YES completion:nil];
         
-        MenuViewController *menuVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"menuVC"];
+        UINavigationController *menuVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"menuNC"];
         [self presentViewController:menuVC animated:YES completion:nil];
         //[self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -165,14 +165,14 @@
 {
     [self.editor dismissViewControllerAnimated:YES completion:nil];
     
-    MenuViewController *menuVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"menuVC"];
+    UINavigationController *menuVC = [[self storyboard] instantiateViewControllerWithIdentifier:@"menuNC"];
     [self presentViewController:menuVC animated:YES completion:nil];
 }
 
 - (void)imageEditor:(CLImageEditor *)editor didFinishEdittingWithImage:(UIImage *)image
 {
     if (self.isHost) {
-        [self uploadImage:image];
+        [self uploadImage:self.editor.imageViewWrapper.image];
         
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         NSString *sessionID = [ud objectForKey:@"SessionId"];
@@ -261,6 +261,11 @@
             
         }
     }];
+}
+
+- (void)saveFinalImage:(UIImage *)image
+{
+    self.final = image;
 }
 
 /*

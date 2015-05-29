@@ -39,6 +39,12 @@ NSString *const kHostSessionTableCellNibName = @"HostSessionTableViewCell";
     self.operationQueue = [NSOperationQueue new];
     NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(doPolling) object:nil ];
     [self.operationQueue addOperation:operation];
+    
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.spinner.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
+    [self.view addSubview:self.spinner];
+    [self.view bringSubviewToFront:self.spinner];
+    [self.spinner startAnimating];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +56,7 @@ NSString *const kHostSessionTableCellNibName = @"HostSessionTableViewCell";
 {
     self.shouldPoll = NO;
     [self.operationQueue cancelAllOperations];
+    [self.spinner stopAnimating];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

@@ -109,7 +109,7 @@ static NSString* const kCLDrawToolEraserIconName = @"eraserIconAssetsName";
         UIImage *image = [self buildImage];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            completionBlock(image, nil, nil);
+            completionBlock(self.result, nil, nil);
         });
     });
 }
@@ -345,10 +345,32 @@ static NSString* const kCLDrawToolEraserIconName = @"eraserIconAssetsName";
 
 - (UIImage*)buildImage
 {
+    
     UIGraphicsBeginImageContextWithOptions(_originalImageSize, NO, self.editor.imageView.image.scale);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // push context to make it current
+    // (need to do this manually because we are not drawing in a UIView)
+    UIGraphicsPushContext(context);
     
     [self.editor.imageView.image drawAtPoint:CGPointZero];
     [_drawingView.image drawInRect:CGRectMake(0, 0, _originalImageSize.width, _originalImageSize.height)];
+    
+    UIImage *tmp = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return tmp;
+}
+
+- (UIImage*)buildImagebuildImageWithBase:(UIImage *)image WithDrawing:(UIImage *)image2
+{
+    
+    UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
+    
+    [image drawAtPoint:CGPointZero];
+    [image2 drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
     
     UIImage *tmp = UIGraphicsGetImageFromCurrentImageContext();
     
@@ -376,10 +398,14 @@ static NSString* const kCLDrawToolEraserIconName = @"eraserIconAssetsName";
     CGContextAddLineToPoint(context, to.x, to.y);
     CGContextStrokePath(context);
     
-    editor.drawingView.image = UIGraphicsGetImageFromCurrentImageContext();
-    UIImage *result = nil;
+    UIImage *drawing = UIGraphicsGetImageFromCurrentImageContext();
+    self.result = editor.drawingView.image;
+    
+    editor.imageViewWrapper.image = [self buildImagebuildImageWithBase:editor.imageViewWrapper.image WithDrawing:drawing];
+    
     UIGraphicsEndImageContext();
-    return result;
+    UIImage *result2 = nil;
+    return result2;
 }
 
 @end

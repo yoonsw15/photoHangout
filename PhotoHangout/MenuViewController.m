@@ -10,6 +10,7 @@
 #import "InviteFriendsViewController.h"
 #import "JoinSessionViewController.h"
 #import "DownloadViewController.h"
+#define isiPhone5  ([[UIScreen mainScreen] bounds].size.height == 568)?TRUE:FALSE
 
 @interface MenuViewController () 
 
@@ -24,10 +25,18 @@
     self.userName = [ud objectForKey:@"UserName"];
     self.userID = [ud objectForKey:@"UserId"];
     
-    self.albumHeight.constant = self.view.frame.size.height/4.5;
-    self.cameraRollHeight.constant = self.view.frame.size.height/4.5;
-    self.joinHeight.constant = self.view.frame.size.height/4.5;
-    self.takePhotoHeight.constant = self.view.frame.size.height/4.5;
+    double buttonSize ;
+    if (isiPhone5) {
+        buttonSize = 5.0;
+    }
+    else {
+        buttonSize = 4.5;
+    }
+    
+    self.albumHeight.constant = self.view.frame.size.height/buttonSize;
+    self.cameraRollHeight.constant = self.view.frame.size.height/buttonSize;
+    self.joinHeight.constant = self.view.frame.size.height/buttonSize;
+    self.takePhotoHeight.constant = self.view.frame.size.height/buttonSize;
     
 }
 

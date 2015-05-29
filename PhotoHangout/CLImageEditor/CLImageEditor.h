@@ -38,7 +38,7 @@
 @optional
 - (void)imageEditor:(CLImageEditor*)editor didFinishEdittingWithImage:(UIImage*)image;
 - (void)imageEditorDidCancel:(CLImageEditor*)editor;
-
+- (void)saveFinalImage:(UIImage *)image;
 @end
 
 
