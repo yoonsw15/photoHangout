@@ -10,6 +10,7 @@
 #import "JoinSessionViewController.h"
 #import "SignupViewController.h"
 #import "MenuViewController.h"
+#define isiPhone5  ([[UIScreen mainScreen] bounds].size.height == 568)?TRUE:FALSE
 
 @interface InitialViewController ()
 
@@ -36,11 +37,24 @@
     
     [self.logo setTransform:CGAffineTransformMakeRotation(-M_PI/5.25)];
     [self.view bringSubviewToFront:self.logo];
+    if (isiPhone5) {
+        self.logo.font = [UIFont fontWithName:@"Menlo" size:30];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    if (isiPhone5) {
+        self.userNameWidth.constant = 150;
+        self.pwWidth.constant = 150;
+        self.textVSpacing.constant = 400;
+        self.textVSpacing2.constant = 20;
+        self.logoVSpacing.constant = -120;
+    }
+    else {
+        self.logoVSpacing.constant = -85;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -129,8 +143,12 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.35f];
     CGRect viewBounds = self.view.bounds;
-    viewBounds.origin.y = self.view.bounds.origin.y + 100;
-    self.view.bounds = viewBounds;
+    if (isiPhone5) {
+        viewBounds.origin.y = self.view.bounds.origin.y + 200;
+    }
+    else {
+        viewBounds.origin.y = self.view.bounds.origin.y + 100;
+    }    self.view.bounds = viewBounds;
     [UIView commitAnimations];
 }
 
@@ -139,7 +157,12 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.35f];
     CGRect viewBounds = self.view.bounds;
-    viewBounds.origin.y = self.view.bounds.origin.y - 100;
+    if (isiPhone5) {
+        viewBounds.origin.y = self.view.bounds.origin.y - 200;
+    }
+    else {
+        viewBounds.origin.y = self.view.bounds.origin.y - 100;
+    }
     self.view.bounds = viewBounds;
     [UIView commitAnimations];
 }

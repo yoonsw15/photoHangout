@@ -166,7 +166,7 @@ NSString *const kJoinTableCellNibName = @"JoinTableViewCell";
         NSString *photoId = [invitationDict objectForKey:@"photoId"];
         NSString *hostUserName = [invitationDict objectForKey:@"hostName"];
         
-        NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat: @"http://jingyuliu.com:8080/myapp/photos/%@/%@", hostUserName,photoId]];
+        NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat: @"http://jingyuliu.com:8080/myapp/photos/%@",photoId]];
         
         self.receivedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageURL]];
         

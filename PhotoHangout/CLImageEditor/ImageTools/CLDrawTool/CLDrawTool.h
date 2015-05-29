@@ -10,5 +10,5 @@
 
 @interface CLDrawTool : CLImageToolBase
 - (UIImage *)externalDrawLine:(CGPoint)from to:(CGPoint)to WithWidth:(CGFloat)width withColor:(UIColor*)color withEditor:(CLImageEditor *)editor;
-
+@property (nonatomic, strong) UIImage *result;
 @end

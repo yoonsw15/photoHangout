@@ -63,7 +63,7 @@
 
 - (void)executeWithCompletionBlock:(void (^)(UIImage *, NSError *, NSDictionary *))completionBlock
 {
-    completionBlock(self.editor.imageView.image, nil, nil);
+    completionBlock(self.editor.imageViewWrapper.image, nil, nil);
 }
 
 #pragma mark- 

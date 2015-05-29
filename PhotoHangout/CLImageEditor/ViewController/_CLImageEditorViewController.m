@@ -618,7 +618,7 @@
         else if(image){
             _originalImage = image;
             _imageView.image = image;
-            
+            [self.delegate saveFinalImage:image];
             [self resetImageViewFrame];
             self.currentTool = nil;
         }

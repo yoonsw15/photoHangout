@@ -16,5 +16,10 @@
 
 - (IBAction)loginTapped:(id)sender;
 - (IBAction)signUpTapped: (id)sender;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *userNameWidth;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *pwWidth;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *logoVSpacing;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *textVSpacing;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *textVSpacing2;
 
 @end

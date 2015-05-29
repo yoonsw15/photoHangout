@@ -46,7 +46,7 @@ static NSString * const PhotoCellIdentifier = @"PhotoCell";
     
 
     NSURL *urlPhotoList = [NSURL URLWithString:[NSString stringWithFormat:@"http://jingyuliu.com:8080/myapp/photos/%@/all", UserName]];
-    NSURL *urlPrefix =[NSURL URLWithString:[NSString stringWithFormat:@"http://jingyuliu.com:8080/myapp/photos/%@/", UserName]];
+    NSURL *urlPrefix =[NSURL URLWithString:[NSString stringWithFormat:@"http://jingyuliu.com:8080/myapp/photos/"]];
     //NSURL *urlPrefix = [NSURL URLWithString:@"http://raw.github.com/ShadoFlameX/PhotoCollectionView/master/Photos/"];
     
     NSData * allUsersJSON =[NSData dataWithContentsOfURL:urlPhotoList];
@@ -60,13 +60,7 @@ static NSString * const PhotoCellIdentifier = @"PhotoCell";
         
         store = [allListArray valueForKeyPath:@"photoId"];
 
-        /*
-        for(NSInteger i = 0 ; i < temp; i++) {
-            NSLog(@"Photo ID: %@", store[i]) ;
-            //store = [[self.allLists[i] valueForKeyPath:@"photoid"] integerValue];
-        }
-        if (error == nil) {
-        }*/
+        
         
     }
     
@@ -80,21 +74,15 @@ static NSString * const PhotoCellIdentifier = @"PhotoCell";
         [self.albums addObject:album];
     }
     else {
-        for (NSInteger a = 0; a < 12; a++) {
+        for (NSInteger a = 0; a < store.count; a++) {
             BHAlbum *album = [[BHAlbum alloc] init];
-            //album.name = [NSString stringWithFormat:@"Photo Album %d", a+1];
 
-            NSUInteger photoCount = arc4random()%4 +2;
-            for (NSInteger p = 0; p <photoCount; p++) {
-                // there are up to 25 photos available to load from the code repository
-                NSString *photoFilename = [NSString stringWithFormat:@"%@",store[photoIndex % store.count]];
+                NSString *photoFilename = [NSString stringWithFormat:@"%@",store[photoIndex]];
                 NSURL *photoURL = [urlPrefix URLByAppendingPathComponent:photoFilename];
                 BHPhoto *photo = [BHPhoto photoWithImageURL:photoURL];
                 [album addPhoto:photo];
-            
-                //standard++;
                 photoIndex++;
-            }
+            
         
             [self.albums addObject:album];
         
